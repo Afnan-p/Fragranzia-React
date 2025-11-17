@@ -1,0 +1,27 @@
+.Home-Explore-Categories{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+     /* box-shadow:2px 2px 2px  rgba(42, 41, 41, 0.1);  */
+}
+.Catagories{
+
+    border-radius: 50%;
+    border: solid 2px #e2e3e5;
+    height: 200px;
+    width: 200px;
+    /* box-shadow: 2px 5px 6px rgba(0,0,0,0.1); */
+     box-shadow:2px 2px 2px  rgba(22, 22, 22, 0.1); 
+     
+
+   
+}
+@media (max-width: 768px) {
+    .Home-Explore-Categories{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+}

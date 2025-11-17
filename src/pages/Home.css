@@ -1,0 +1,141 @@
+#root {
+  margin: 0 auto;
+  padding: 30px;
+  /* text-align: center; */
+}
+.Blue-Line{
+    max-width: 100%;
+    height: 60px;
+     background-color: #0d2a46;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    padding: 15px;
+}
+.Offer-Boxes{
+    max-width: 100%;
+  /* width: 200px; */
+   height: 35vh;
+    background-color:rgba(234, 229, 232, 1); 
+   border-radius: 15px;
+   margin: 0 ; 
+   padding: 10px;
+   
+}
+.Offer-Boxes1{
+    max-width: 100%;
+  /* width: 200px; */
+   height: 35vh;
+    background-color:rgba(234, 229, 232, 1); 
+   border-radius: 15px;
+   margin: 0 ; 
+   padding: 10px;
+   
+}
+.Offer-Boxes2{
+    max-width: 100%;
+  /* width: 200px; */
+   height: 35vh;
+    background-color:rgba(234, 229, 232, 1); 
+   border-radius: 15px;
+   margin: 0 ; 
+   padding: 10px;
+  
+}
+.Offer-Boxes3{
+    max-width: 100%;
+  /* width: 200px; */
+   height: 35vh;
+    background-color:rgba(234, 229, 232, 1); 
+   border-radius: 15px;
+   margin: 0 ; 
+   padding: 10px;
+   
+}
+.Home-Bottle1{
+      height: 200px;
+    width: 250px;
+   
+  
+}
+.Home-Bottle2{
+    height: 190px;
+    width: 300px;
+    
+   
+}
+.Home-Bottle3{
+    height: 150px;
+    width: 210px;
+  
+}
+/* .Special-deals{
+
+} */
+.Home-iconic-btn{
+ height: 50px;
+ width: 150px;
+ padding: 10px;
+        background-color: #0d2a46;
+        border-radius: 10px;
+        color: white;
+  
+}
+ 
+
+.Provide-content{
+    border: 2px solid;
+    padding: 30px;
+      border-radius: 12px;
+      box-shadow: 2px 5px 6px rgba(0,0,0,0.1);
+      border-color: antiquewhite;
+}
+.rotatetext1{
+    padding: 10px;
+    transform: rotate(270deg);
+    transform-origin: left top 0;
+    position: absolute;
+    /* margin-left: -70px; */
+    /* margin-top: 150px; */
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.iconic-card{
+    margin-top: 100px;
+    /* border: 2px solid;
+    border-radius: 15px; */
+    box-shadow: 2px 5px 6px rgba(0,0,0,0.1);
+    /* border-color: antiquewhite; */
+     width: 100%;
+  height: 55vh;
+  object-fit: cover;
+  /* filter: brightness(80%); */
+}
+.iconic-img{
+width: 100%;
+  height: 55vh;
+border-radius: 15px;
+/* border: 2px solid; */
+}
+
+
+
+/* overflow-x: scroll; */
+@media (max-width: 768px) {
+    .Offer-Boxes{
+        height: auto;
+    }
+    .Provide-content{
+        display: flex;
+        flex-direction: column;
+    }
+    .Home-New-Arrivals {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Home-New{
+        flex-direction: column;
+        align-items: center;
+    }
+}

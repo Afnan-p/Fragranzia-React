@@ -1,0 +1,24 @@
+.Home-Products-Slide{
+    margin-top: 20px;
+    /* overflow-x: scroll; */
+    padding-bottom: 10px;   
+    
+}
+
+.card-title{
+    font-size: 18px;
+    font-weight: bold;
+}
+.rating-stars{
+    color: #f5c518;
+}
+.Home-AddCart-btn {
+        height: 50px;
+        background-color: #0d2a46;
+        border-radius: 10px;
+        color: white;
+  
+}.Home-AddCart-btn:hover {
+    background-color: #0a1f33;
+    cursor: pointer;
+}

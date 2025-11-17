@@ -1,0 +1,21 @@
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #f2dede;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.navbar {
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
