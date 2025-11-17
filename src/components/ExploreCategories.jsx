@@ -1,5 +1,6 @@
 import React from 'react'
 import "./ExploreCategories.css";
+import { Link } from 'react-router-dom';
 
 export const ExploreCategories = () => {
   return (
@@ -8,7 +9,7 @@ export const ExploreCategories = () => {
              <div>
        <h2 style={{ fontSize: '35px' }}><b>Explore Categories</b></h2>
         </div>
-    <div> <h2 style={{ fontSize: '35px', cursor:'pointer'}}><b>See All</b></h2>
+    <div> <h2 style={{ fontSize: '35px', cursor:'pointer'}}><b><Link to="/products">See All</Link></b></h2>
      </div>
         </div>
    
