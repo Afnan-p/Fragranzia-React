@@ -18,18 +18,43 @@ console.log(data,"dataaa");
       const exist=cartItems.some((item)=>item.id === id);
 
       if(!exist){
-       setCartItems([...cartItems,result])
+       setCartItems([...cartItems, { ...result, quantity: 1 }])
+       toast.success('Successfully Added!')
       }else{
         alert("This Item Already In Cart!!")
       }
-      toast.success('Successfully Added!')
+      // toast.success('Successfully Added!')
       
       console.log("Cart Items:", cartItems);
 
     }
+
+    function Removeitem(id) {
+      const remove =cartItems.filter((item)=>item.id!==id);
+      setCartItems(remove);
+    }
+
+    function Countfunction(id) {
+      setCartItems(prev=>
+        prev.map((item)=>item.id===id ?{ ...item, quantity: item.quantity + 1 }:item)
+      )
+    }
+
+   function DecrementFunction(id) {
+  setCartItems(prev =>
+    prev.map(item =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+      // .filter(item => item.quantity > 0)
+  );
+}
+
+    
   return (
     <>
-   <Cartcontaxt.Provider value={{cartItems,setCartItems,handleAddToCart}}>
+   <Cartcontaxt.Provider value={{cartItems,setCartItems,handleAddToCart,Removeitem,Countfunction,DecrementFunction}}>
     {children}
     </Cartcontaxt.Provider>
 

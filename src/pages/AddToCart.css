@@ -1,4 +1,9 @@
-.Cart-Content{
+
+#root {
+  margin: 0 auto;
+  padding: 30px;
+  /* text-align: center; */
+}.Cart-Content{
     padding: 30px;
 }
 .Product-Card{

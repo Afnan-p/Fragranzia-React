@@ -3,6 +3,7 @@ import "./ExploreCategories.css";
 import { Link } from 'react-router-dom';
 
 export const ExploreCategories = () => {
+  
   return (
     <>
          <div className='Explore-Headings flex justify-between items-center px-4 mb-6 '>

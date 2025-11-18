@@ -63,7 +63,9 @@ export const Header = () => {
             {/* Icons */}
             <div className="flex gap-3">
               <div className="w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100">
-                <FaShoppingCart />
+               <Link to="/cart"><FaShoppingCart /></Link>
+
+                
               </div>
               <div className="w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100">
                 <FaBell />
@@ -101,7 +103,8 @@ export const Header = () => {
           {/* Icons */}
           <div className="flex gap-2">
             <div className="w-10 h-10 flex items-center justify-center rounded-full border">
-              <FaShoppingCart />
+               <Link to="/cart"><FaShoppingCart /></Link>
+              
             </div>
             <div className="w-10 h-10 flex items-center justify-center rounded-full border">
               <FaBell />

@@ -25,10 +25,11 @@ import { Footer } from '../components/Footer';
 import { Product } from './Product';
 import { AddToCart } from './AddToCart';
 import { Maincontext } from '../context/Maincontext';
+import { Cartcontaxt } from '../context/Cartcontext';
 
 
 export const Home = () => {
-  
+  const {handleAddToCart} =useContext(Cartcontaxt);
 const {data,setData}=useContext(Maincontext);
       useEffect(() => {
         fetch('https://fakestoreapi.com/products?limit=10')

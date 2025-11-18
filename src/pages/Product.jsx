@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Product.css';
 import { FaStar } from "react-icons/fa";
 // import { IoIosArrowForward } from "react-icons/io";
@@ -6,10 +6,14 @@ import { FaStar } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import { Footer } from '../components/Footer';
 import { Link } from "react-router-dom";
+import { Cartcontaxt } from '../context/Cartcontext';
+import { Header } from '../components/Header';
 
 
 export const Product = () => {
        const [data, setData] = useState([]);
+         const {handleAddToCart} =useContext(Cartcontaxt);
+       
           
           
           useEffect(() => {
@@ -20,7 +24,7 @@ export const Product = () => {
           }, []);
   return (
     <>
-
+<Header/>
       <div className='Blue-Line mt-5'>
         <p>ENJOY FESTIVE DISCOUNTS!FREE SHIPPING ABOVE 999!</p>
       </div>
