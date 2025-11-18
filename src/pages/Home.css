@@ -118,7 +118,9 @@ width: 100%;
 border-radius: 15px;
 /* border: 2px solid; */
 }
-
+.Home-Offerzone{
+    scrollbar-width: none;
+}
 
 
 /* overflow-x: scroll; */

@@ -2,6 +2,7 @@
     margin-top: 20px;
     /* overflow-x: scroll; */
     padding-bottom: 10px;   
+    scrollbar-width: none;
     
 }
 

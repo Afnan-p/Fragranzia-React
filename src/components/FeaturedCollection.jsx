@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import "./FeaturedCollection.css";
+import { Cartcontaxt } from '../context/Cartcontext';
 
 
 export const FeaturedCollection = ({setData,data}) => {
+   
+const {handleAddToCart} =useContext(Cartcontaxt);
 
   return (
     

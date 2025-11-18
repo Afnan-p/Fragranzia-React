@@ -5,14 +5,20 @@ import App from './App.jsx'
 // import './variables.css';
 // import './global.css';
 import { BrowserRouter } from "react-router-dom";
+import { Cartprovider } from './context/Cartcontext.jsx';
+import { Mainprovider } from './context/Maincontext.jsx';
 
 
 
 createRoot(document.getElementById('root')).render(
-   <BrowserRouter>
-   <StrictMode>
-    <App />
-  </StrictMode>,
+  <BrowserRouter>
+    <StrictMode>
+      <Mainprovider>
+      <Cartprovider>
+        <App />
+      </Cartprovider>
+      </Mainprovider>
+    </StrictMode>,
   </BrowserRouter>
-  
+
 )

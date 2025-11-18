@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { HeroSlider } from '../components/HeroSlider'
 import { Header } from '../components/Header'
 import "./Home.css";
@@ -23,13 +23,13 @@ import { FeaturedCollection } from '../components/FeaturedCollection';
 import { ExploreCategories } from '../components/ExploreCategories';
 import { Footer } from '../components/Footer';
 import { Product } from './Product';
+import { AddToCart } from './AddToCart';
+import { Maincontext } from '../context/Maincontext';
 
 
 export const Home = () => {
   
-      const [data, setData] = useState([]);
-      
-      
+const {data,setData}=useContext(Maincontext);
       useEffect(() => {
         fetch('https://fakestoreapi.com/products?limit=10')
           .then(res => res.json())
@@ -139,7 +139,7 @@ export const Home = () => {
 
 <div className='Home-Offerzone'>
    <h2 style={{ fontSize: '35px' }}><b>Offer Zone</b></h2>
-          <div className='Home-Home-Offerzone flex overflow-x-scroll  '>
+          <div className='Home-Offerzone flex overflow-x-scroll '>
             {data.map((product) => (
               <div key={product.id}>
                 <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg 'style={{width:'400px'}}>
@@ -184,6 +184,8 @@ export const Home = () => {
 <Footer/>
 
 {/* <Product/> */}
+
+<AddToCart/>
 
     </>
 
