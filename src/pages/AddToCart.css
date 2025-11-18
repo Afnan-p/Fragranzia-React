@@ -1,0 +1,34 @@
+.Cart-Content{
+    padding: 30px;
+}
+.Product-Card{
+    position: relative;
+}
+.Cart-close-btn{
+    position: absolute;
+    right:10px;
+    top: 10px;
+}
+
+@media (max-width: 576px) {
+    .content{
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+       /* margin-left: 50px; */
+    }
+}
+
+@media (max-width: 430px) {
+    .Cart-Buttons{
+        display: flex;
+       flex-direction: column;
+       align-items: center;
+       
+
+       /* margin-left: 50px; */
+    }
+    .content{
+        padding: 10px;
+    }
+}

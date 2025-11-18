@@ -7,6 +7,7 @@ import { HeroSlider } from './components/HeroSlider'
 import { Home } from './pages/Home'
 import { Product } from './pages/Product'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AddToCart } from './pages/AddToCart'
 
 
 
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Product />} />
+        <Route path="/cart" element={<AddToCart/>} />
       </Routes>
 
      

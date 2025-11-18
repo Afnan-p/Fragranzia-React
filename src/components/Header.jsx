@@ -37,6 +37,9 @@ export const Header = () => {
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/products">Product</Link>
   </li>
+  <li className="hover:text-[#0d2a46] transition">
+    <Link to="/cart">Cart</Link>
+  </li>
 
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/gifting">Gifting</Link>
@@ -77,8 +80,11 @@ export const Header = () => {
       {/* Mobile Menu */}
       <div id="mobileMenu" className="lg:hidden hidden px-6 pb-4">
         <ul className="flex flex-col gap-4 text-gray-700 font-medium">
-          <li>Home</li>
+          <li><Link to ="/">Home</Link> </li>
           <li><Link to="/products">Products</Link></li>
+           <li className="hover:text-[#0d2a46] transition">
+    <Link to="/cart">Cart</Link>
+  </li>
           <li>Gifting</li>
           <li>About</li>
         </ul>

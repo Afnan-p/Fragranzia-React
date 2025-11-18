@@ -7,6 +7,8 @@ import { Cartcontaxt } from '../context/Cartcontext';
 export const FeaturedCollection = ({setData,data}) => {
    
 const {handleAddToCart} =useContext(Cartcontaxt);
+// console.log(data,"dataaa");
+
 
   return (
     
