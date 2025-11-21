@@ -25,7 +25,7 @@ const {handleAddToCart} =useContext(Cartcontaxt);
                     <h5 className="card-title">{product.title.slice(0, 20)}...</h5>
                     <p className='product-description'>{product.description.slice(0, 30)}...</p>
                     <p className="card-text ">{product.category}</p>
-                    <h6>Rs {product.price * 20}/-</h6>
+                    <h6>Rs {product.price }/-</h6>
                   </div>
                 </div>
                 <div className='rating-stars flex px-3  gap-1 ' >

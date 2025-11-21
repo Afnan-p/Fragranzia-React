@@ -4,3 +4,26 @@
     padding: 0;
     box-sizing: border-box;
 }
+button {
+  padding: var(--padding-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.btn-delete {
+  border: 2px solid var(--danger-color);
+  color: var(--danger-color);
+  background: transparent;
+}
+
+.btn-share {
+  border: 2px solid var(--border-color);
+  color: var(--border-color);
+  background: transparent;
+}
+
+.btn-buy {
+  background: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+}

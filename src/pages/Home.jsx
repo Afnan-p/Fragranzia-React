@@ -58,7 +58,8 @@ const {data,setData}=useContext(Maincontext);
               <h2 className="font-semibold">Unlock Exclusive Offers</h2>
               <p>Discover special deals tailored just for you!</p>
             </div>
-            <div><img className='Home-Bottle1' src={Bottle1} alt="" /></div>
+            <div>
+              <img className='Home-Bottle1' src={Bottle1} alt="" /></div>
 
           </div>
 
@@ -67,18 +68,18 @@ const {data,setData}=useContext(Maincontext);
               <h4 className="font-semibold">Gift Scents to Your Loved Ones</h4>
               <p>Make your moments more beautiful</p>
             </div>
-            <div className='Home-Bottle2' style={{ position: 'absolute', top: '30px', left: '60px' }}> <img src={Bottle2} alt="" />
-            </div>
+            {/* <div className='Home-Bottle2' style={{ position: 'absolute', top: '30px', left: '60px' }}> <img src={Bottle2} alt="" />
+            </div> */}
           </div>
 
           <div className="Offer-Boxes3">
             <div> <h4 className="font-semibold">Luxury Scents Starting at $4,000</h4>
             </div>
 
-            <div className='flex'>
+            {/* <div className='flex'>
               <img className='Sticker' src={Sticker} alt="" />
               <img className='Home-Bottle3' src={Bottle3} alt="" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -153,7 +154,7 @@ const {data,setData}=useContext(Maincontext);
                       <h5 className="card-title">{product.title.slice(0, 20)}...</h5>
                       <p className='product-description'>{product.description.slice(0, 30)}...</p>
                       <p className="card-text ">{product.category}</p>
-                      <h6>Rs {product.price * 20}/-</h6>
+                      <h6>Rs {product.price }/-</h6>
                     </div>
                   </div>
                   <div className='rating-stars flex px-3  gap-1 ' >
@@ -188,7 +189,7 @@ const {data,setData}=useContext(Maincontext);
 
 {/* <Product/> */}
 
-<AddToCart/>
+{/* <AddToCart/> */}
 
     </>
 

@@ -14,20 +14,23 @@ import { AddToCart } from './pages/AddToCart'
 
 
 
+
+
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-     
-      
+
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Product />} />
-        <Route path="/cart" element={<AddToCart/>} />
+        <Route path="/cart" element={<AddToCart />} />
       </Routes>
 
-     
+
     </>
   )
 }
