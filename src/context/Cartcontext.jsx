@@ -10,7 +10,8 @@ export const Cartprovider = ({children}) => {
     
   const [cartItems, setCartItems] = useState([]);
 const {data,setData}=useContext(Maincontext);
-console.log(data,"dataaa");
+// console.log(data,"dataaa");
+const  [buyList,setBuyList]=useState([])
 
   
     function handleAddToCart(id) {
@@ -21,7 +22,8 @@ console.log(data,"dataaa");
        setCartItems([...cartItems, { ...result, quantity: 1 }])
        toast.success('Successfully Added!')
       }else{
-        alert("This Item Already In Cart!!")
+       toast.error("This Item Already In Cart.")
+
       }
       // toast.success('Successfully Added!')
       
@@ -50,11 +52,19 @@ console.log(data,"dataaa");
       // .filter(item => item.quantity > 0)
   );
 }
+function Buyfunction(id) {
+  const Buyresult=cartItems.find((product)=>product.id ===id);
+  setBuyList(prev => [...prev, Buyresult])
+  // console.log(Buyresult,"buy");
+  // console.log(Buyresult.quantity,"buy");
+  
+  // setBuyList([...cartItems, { ...Buyresult, quantity: 1 }])
+}
 
     
   return (
     <>
-   <Cartcontaxt.Provider value={{cartItems,setCartItems,handleAddToCart,Removeitem,Countfunction,DecrementFunction}}>
+   <Cartcontaxt.Provider value={{cartItems,setCartItems,handleAddToCart,Removeitem,Countfunction,DecrementFunction,Buyfunction,buyList}}>
     {children}
     </Cartcontaxt.Provider>
 

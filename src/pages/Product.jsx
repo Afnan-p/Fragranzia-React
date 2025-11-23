@@ -8,20 +8,17 @@ import { Footer } from '../components/Footer';
 import { Link } from "react-router-dom";
 import { Cartcontaxt } from '../context/Cartcontext';
 import { Header } from '../components/Header';
+import { Maincontext } from '../context/Maincontext';
 
 
 export const Product = () => {
-       const [data, setData] = useState([]);
+      //  const [data, setData] = useState([]);
          const {handleAddToCart} =useContext(Cartcontaxt);
+           const {data,setData} =useContext(Maincontext);
+         
        
           
-          
-          useEffect(() => {
-            fetch('https://fakestoreapi.com/products?limit=10')
-              .then(res => res.json())
-              .then(json => setData(json))
-            // .catch(err => console.log('Error fetching data:', err));
-          }, []);
+         
   return (
     <>
 <Header/>

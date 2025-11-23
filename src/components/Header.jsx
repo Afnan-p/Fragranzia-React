@@ -40,6 +40,9 @@ export const Header = () => {
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/cart">Cart</Link>
   </li>
+  <li className="hover:text-[#0d2a46] transition">
+    <Link to="/order">Order</Link>
+  </li>
 
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/gifting">Gifting</Link>

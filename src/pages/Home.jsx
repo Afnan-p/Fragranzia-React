@@ -30,14 +30,17 @@ import { Cartcontaxt } from '../context/Cartcontext';
 
 export const Home = () => {
   const {handleAddToCart} =useContext(Cartcontaxt);
-const {data,setData}=useContext(Maincontext);
-      useEffect(() => {
-        fetch('https://fakestoreapi.com/products?limit=10')
-          .then(res => res.json())
-          .then(json => setData(json))
-        // .catch(err => console.log('Error fetching data:', err));
-      }, []);
-      // console.log(data,"dataaaa");
+  const {data,setData} =useContext(Maincontext);
+
+
+// const {data,setData}=useContext(Maincontext);
+//       useEffect(() => {
+//         fetch('https://fakestoreapi.com/products?limit=10')
+//           .then(res => res.json())
+//           .then(json => setData(json))
+//         // .catch(err => console.log('Error fetching data:', err));
+//       }, []);
+//       // console.log(data,"dataaaa");
       
   return (
 
