@@ -95,7 +95,7 @@ export const AddToCart = () => {
         </div>
          <div className="Buy-btn w-full  mt-2 p-3 text-center mt-5">
 
-        <button>Proceed to Buy</button>
+        <button> <Link to="/order">Proceed to Buy</Link></button>
          </div>
       </div>
       )}

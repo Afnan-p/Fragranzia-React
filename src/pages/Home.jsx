@@ -28,6 +28,7 @@ import { Maincontext } from '../context/Maincontext';
 import { Cartcontaxt } from '../context/Cartcontext';
 
 
+
 export const Home = () => {
   const {handleAddToCart} =useContext(Cartcontaxt);
   const {data,setData} =useContext(Maincontext);

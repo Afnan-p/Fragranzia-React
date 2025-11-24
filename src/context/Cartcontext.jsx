@@ -64,7 +64,7 @@ function Buyfunction(id) {
     
   return (
     <>
-   <Cartcontaxt.Provider value={{cartItems,setCartItems,handleAddToCart,Removeitem,Countfunction,DecrementFunction,Buyfunction,buyList}}>
+   <Cartcontaxt.Provider value={{cartItems,setCartItems,handleAddToCart,Removeitem,Countfunction,DecrementFunction,Buyfunction,buyList,setBuyList}}>
     {children}
     </Cartcontaxt.Provider>
 
