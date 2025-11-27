@@ -53,8 +53,9 @@ const  [buyList,setBuyList]=useState([])
   );
 }
 function Buyfunction(id) {
-  const Buyresult=cartItems.find((product)=>product.id ===id);
-  setBuyList(prev => [...prev, Buyresult])
+  // const Buyresult=cartItems.find((product)=>product.id ===id);
+  // setBuyList(prev => [...prev, Buyresult])
+ setBuyList(cartItems)
   // console.log(Buyresult,"buy");
   // console.log(Buyresult.quantity,"buy");
   

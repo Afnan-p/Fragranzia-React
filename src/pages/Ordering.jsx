@@ -16,7 +16,12 @@ export const Ordering = () => {
     const gst = GrandTotal * 0.05;
      const finalAmount = GrandTotal + deliveryCharge + gst;
   const [addressShow,setAddressShow]=useState(false)
-  const [orderView,setOrderView]=useState(false)
+  // const [orderView,setOrderView]=useState(false)
+  // const [dAddress,setDAddress]=useState({ name:"Afnan",
+  //   phone:"8891003031",
+  //   house: "Pathnapuram",
+  //  city: "Areacode",
+  //  pincode: "673639"})
 
   const [address,setAddress]=useState({
     name:"",
@@ -56,7 +61,7 @@ export const Ordering = () => {
       finalAmount,
     });
 
-   setOrderView(true)
+  //  setOrderView(true)
   
   }
 
@@ -71,7 +76,7 @@ function RemoveOrderitem(id) {
   
     <div className='Home-ordering'>
       <Header />
-       <h2 style={{ fontSize: '35px' }}><b>Ordering</b></h2>
+       <h2 style={{ fontSize: '35px' }}><b>Checkout</b></h2>
               <div className='products p-4  flex justify-between '>
        <div className="orderall">
                 {buyList.map((product) => (
@@ -132,69 +137,11 @@ function RemoveOrderitem(id) {
         
       </div>
       )}
-      </div>
-              </div>
-
-<div className="Address_payment flex justify-between p-4">
-              <div className="addressbox">
-                <h2 className='text-lg font-bold 'style={{ fontSize: '25px' }}>Personal Details</h2>
-                <div className="Address-btn p-1 mt-4">
-                <button  onClick={()=>setAddressShow(!addressShow)} >Add address</button>
-                </div>
-                {addressShow && (
-                   <div className="DeliveryAddress  p-4">
-                  <h2 className='text-lg font-bold'>DeliveryAddress</h2>
-                  <div className='inputs flex gap-3 flex-col border border-gray-400 rounded-lg shadow-md hover:shadow-lg p-4' >
-                      <input  type="text" placeholder="Full Name"
-                       className="w-full p-2 mb-2 border rounded"
-                       onChange={(e)=>setAddress({...address,name:e.target.value})} />
-                  
-                          <input placeholder="Mobile Number" pattern="[0-9]{10}"
-                           className="w-full p-2 mb-2 border rounded"
-                            onChange={(e)=>setAddress({...address, phone:e.target.value})}
-                          />
-
-                          <input placeholder="House/Street"
-                           className="w-full p-2 mb-2 border rounded"
-                            onChange={(e)=>setAddress({...address, house:e.target.value})}
-                          />
-
-                          <input placeholder="City"
-                           className="w-full p-2 mb-2 border rounded"
-                            onChange={(e)=>setAddress({...address, city:e.target.value})}
-                          />
-
-                          <input placeholder="Pincode"
-                           className="w-full p-2 mb-2 border rounded"
-                            onChange={(e)=>setAddress({...address, pincode:e.target.value})}
-                          />
-
-                  </div>
-                  <div className="order-btn mt-4 p-2">
-
-                  <button onClick={handlePlaceOrder}> Order</button>
-                  </div>
-                </div>
-
-                )}
-               
-              
-{orderView &&(
-  <div className="order-details mt-5 p-4 border rounded bg-green-100 w-full sm:w-[95%] md:w-[700px] lg:w-[750px]">
-    <h3 className="font-bold text-lg mb-2">Your Order is Confirmed!</h3>
-    <p><b>Name:</b> {address.name}</p>
-    <p><b>Phone:</b> {address.phone}</p>
-    <p><b>Address:</b> {address.house}, {address.city}</p>
-    <p><b>Pincode:</b> {address.pincode}</p>
-    {/* <p><b>Payment Mode:</b> {payment}</p> */}
-  </div>
 
 
-)}
-</div>
 
-
-<div className="Payment-Section  border border-gray-400 rounded-lg shadow-md hover:shadow-lg p-4  w-full  md:w-[400px] md:h-[450px]  lg:w-[450px] lg:h-[450px] mx-3 ">
+      {buyList.length>0 &&(
+  <div className="Payment-Section  border border-gray-400 rounded-lg shadow-md hover:shadow-lg p-4  w-full  md:w-[400px] md:h-[450px]  lg:w-[450px] lg:h-[450px] mx-3  mt-10">
 <h3 className="text-xl font-bold mb-4">Payment Methods</h3>
 
 <div className="payment-option flex justify-between items-center p-3 border rounded mb-2">
@@ -242,6 +189,74 @@ function RemoveOrderitem(id) {
          </div>
 
  </div>
+)}
+      </div>
+              </div>
+
+<div className="Address_payment flex justify-between p-4">
+              <div className="addressbox">
+                <h2 className='text-lg font-bold 'style={{ fontSize: '25px' }}>Personal Details</h2>
+
+
+                 <div className="order-details mt-5 p-4 border rounded bg-green-100 w-full sm:w-[95%] md:w-[700px] lg:w-[750px]">
+    <h3 className="font-bold text-lg mb-2">Your Order is Confirmed!</h3>
+    <p><b>Name:</b> {address.name}</p>
+    <p><b>Phone:</b> {address.phone}</p>
+    <p><b>Address:</b> {address.house}, {address.city}</p>
+    <p><b>Pincode:</b> {address.pincode}</p>
+    {/* <p><b>Payment Mode:</b> {payment}</p> */}
+  </div>
+
+                <div className="Address-btn p-1 mt-4">
+                <button  onClick={()=>setAddressShow(!addressShow)} >Add New Address</button>
+                </div>
+                {addressShow && (
+                   <div className="DeliveryAddress  p-4">
+                  <h2 className='text-lg font-bold'>DeliveryAddress</h2>
+                  <div className='inputs flex gap-3 flex-col border border-gray-400 rounded-lg shadow-md hover:shadow-lg p-4' >
+                      <input  type="text" placeholder="Full Name"
+                       className="w-full p-2 mb-2 border rounded"
+                       onChange={(e)=>setAddress({...address,name:e.target.value})} />
+                  
+                          <input placeholder="Mobile Number" pattern="[0-9]{10}"
+                           className="w-full p-2 mb-2 border rounded"
+                            onChange={(e)=>setAddress({...address, phone:e.target.value})}
+                          />
+
+                          <input placeholder="House/Street"
+                           className="w-full p-2 mb-2 border rounded"
+                            onChange={(e)=>setAddress({...address, house:e.target.value})}
+                          />
+
+                          <input placeholder="City"
+                           className="w-full p-2 mb-2 border rounded"
+                            onChange={(e)=>setAddress({...address, city:e.target.value})}
+                          />
+
+                          <input placeholder="Pincode"
+                           className="w-full p-2 mb-2 border rounded"
+                            onChange={(e)=>setAddress({...address, pincode:e.target.value})}
+                          />
+
+                  </div>
+                  <div className="order-btn mt-4 p-2">
+
+                  <button onClick={handlePlaceOrder}> Order</button>
+                  </div>
+                </div>
+
+                )}
+               
+              
+
+
+
+
+
+</div>
+
+
+
               </div>
               {/* <Payment/> */}
               

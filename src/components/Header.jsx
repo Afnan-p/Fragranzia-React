@@ -41,7 +41,7 @@ export const Header = () => {
     <Link to="/cart">Cart</Link>
   </li>
   <li className="hover:text-[#0d2a46] transition">
-    <Link to="/order">Order</Link>
+    <Link to="/order">Checkout</Link>
   </li>
 
   <li className="hover:text-[#0d2a46] transition">

@@ -18,6 +18,8 @@ import { Link } from "react-router-dom";
 export const AddToCart = () => {
   const { cartItems, Removeitem, Countfunction, DecrementFunction,Buyfunction } = useContext(Cartcontaxt)
   // console.log(cartItems,"cartitems");
+  console.log(Buyfunction,"buyyyyyyyy");
+  
   const GrandToatal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
@@ -67,7 +69,7 @@ export const AddToCart = () => {
                     <div className="Cart-Buttons flex   md:flex-row  justify-between my-3 gap-5 " >
                       <div className='Cart-Delete-btn text-center border border-gray-300 p-2 w-20'><button onClick={() => Removeitem(product.id)}>Delete</button></div>
                       <div className='Cart-Share-btn text-center border border-gray-300 p-2 w-20'><button>Share</button></div>
-                      <div className='Cart-Buy-btn  text-center border border-gray-300 p-2 w-20'><button onClick={()=>Buyfunction(product.id)}> <Link to="/order">Buy</Link></button></div>
+                      {/* <div className='Cart-Buy-btn  text-center border border-gray-300 p-2 w-20'><button onClick={()=>Buyfunction(product.id)}> <Link to="/order">Buy</Link></button></div> */}
 
 
                     </div>
@@ -95,7 +97,9 @@ export const AddToCart = () => {
         </div>
          <div className="Buy-btn w-full  mt-2 p-3 text-center mt-5">
 
-        <button> <Link to="/order">Proceed to Buy</Link></button>
+       {/* <Link to="/order">  <button> Proceed to Buy </button></Link> */}
+       <button onClick={Buyfunction}> <Link to="/order">Proceed to Buy</Link></button>
+
          </div>
       </div>
       )}
