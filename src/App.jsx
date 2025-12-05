@@ -10,7 +10,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AddToCart } from './pages/AddToCart'
 // import "./styles/variables.css";
 import "./style/global.css";
-import { Ordering } from './pages/Ordering'
+import { CheckOut } from './pages/CheckOut'
+import { SignUp } from './pages/SignUp'
+import { Login } from './pages/Login'
+import { Wishlist } from './pages/Wishlist'
+import Singleproduct from './pages/Singleproduct'
+import { Userprofile } from './pages/Userprofile'
 
 
 
@@ -31,7 +36,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Product />} />
         <Route path="/cart" element={<AddToCart />} />
-        <Route path="/order" element={<Ordering/>} />
+        <Route path="/wishlist" element={<Wishlist/>} />
+        <Route path="/singleproduct" element={<Singleproduct/>} />
+        <Route path="/order" element={<CheckOut/>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/user" element={<Userprofile/>} />
       </Routes>
 
 {/* </Router> */}

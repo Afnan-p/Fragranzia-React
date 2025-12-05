@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react'
 import { Cartcontaxt } from '../context/Cartcontext'
 import { Header } from '../components/Header'
 import { FaStar } from "react-icons/fa";
-import './Ordering.css'
+import './CheckOut.css'
 import toast, { Toaster } from 'react-hot-toast';
 import { Payment } from '../components/Payment';
 import { GrClose } from "react-icons/gr";
 
 
 
-export const Ordering = () => {
+export const CheckOut= () => {
       const { buyList,Buyfunction ,setBuyList} = useContext(Cartcontaxt)
   const GrandTotal = buyList.reduce((total, item) => total + item.price * item.quantity, 0);
   const deliveryCharge = 40;

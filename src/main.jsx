@@ -7,6 +7,7 @@ import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom";
 import { Cartprovider } from './context/Cartcontext.jsx';
 import { Mainprovider } from './context/Maincontext.jsx';
+import { Wishlistprovider } from './context/Wishlistcontext.jsx';
 
 
 
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')).render(
     <StrictMode>
       <Mainprovider>
       <Cartprovider>
+        <Wishlistprovider>
         <App />
+         </Wishlistprovider>
       </Cartprovider>
       </Mainprovider>
     </StrictMode>

@@ -16,9 +16,6 @@ import Iconic from "../assets/lastbackground.webp";
 import { FaStar } from "react-icons/fa";
 // import './variables.css';
 // import './global.css';
-
-
-
 import { FeaturedCollection } from '../components/FeaturedCollection';
 import { ExploreCategories } from '../components/ExploreCategories';
 import { Footer } from '../components/Footer';

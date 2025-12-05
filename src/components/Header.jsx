@@ -43,6 +43,12 @@ export const Header = () => {
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/order">Checkout</Link>
   </li>
+  <li className="hover:text-[#0d2a46] transition">
+    <Link to="/wishlist">Wishlist</Link>
+  </li>
+  <li className="hover:text-[#0d2a46] transition">
+    <Link to="/singleproduct">Singleproduct</Link>
+  </li>
 
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/gifting">Gifting</Link>
@@ -87,9 +93,14 @@ export const Header = () => {
         <ul className="flex flex-col gap-4 text-gray-700 font-medium">
           <li><Link to ="/">Home</Link> </li>
           <li><Link to="/products">Products</Link></li>
-           <li className="hover:text-[#0d2a46] transition">
-    <Link to="/cart">Cart</Link>
+           <li> <Link to="/cart">Cart</Link> </li>
+           <li> <Link to="/wishlist">Wishlist</Link> </li>
+   
+     <li>    <Link to="/order">Checkout</Link>
   </li>
+
+
+ 
           <li>Gifting</li>
           <li>About</li>
         </ul>
