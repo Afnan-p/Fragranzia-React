@@ -15,7 +15,7 @@ import { SignUp } from './pages/SignUp'
 import { Login } from './pages/Login'
 import { Wishlist } from './pages/Wishlist'
 import Singleproduct from './pages/Singleproduct'
-import { Userprofile } from './pages/Userprofile'
+// import { Userprofile } from './pages/Userprofile'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -32,7 +32,7 @@ function App() {
         <Route path="/order" element={<CheckOut/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/user" element={<Userprofile/>} />
+        {/* <Route path="/user" element={<Userprofile/>} /> */}
       </Routes>
 
 {/* </Router> */}
