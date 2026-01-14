@@ -1,12 +1,13 @@
 import React from 'react'
 import Usersidebar from '../../Components/Usersidebar'
+import Sidebar from './Sidebar'
 
 const Paymentuser = () => {
   return (
     <div>
        <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <Usersidebar />
+   <Sidebar/>
 
       {/* Payment Content */}
       <main className="flex-1 p-8 space-y-6">

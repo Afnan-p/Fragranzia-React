@@ -1,11 +1,12 @@
 import React from "react";
 import Usersidebar from "../../Components/Usersidebar";
+import Sidebar from "./Sidebar";
 
 const Profile = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Left Sidebar */}
-      <Usersidebar />
+      <Sidebar/>
 
       {/* Right Content */}
       <main className="flex-1 p-8 space-y-6">
