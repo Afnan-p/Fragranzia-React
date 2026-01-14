@@ -16,15 +16,6 @@ import { Login } from './pages/Login'
 import { Wishlist } from './pages/Wishlist'
 import Singleproduct from './pages/Singleproduct'
 import { Userprofile } from './pages/Userprofile'
-
-
-
-
-
-
-
-
-
 function App() {
   const [count, setCount] = useState(0)
 
@@ -37,7 +28,7 @@ function App() {
         <Route path="/products" element={<Product />} />
         <Route path="/cart" element={<AddToCart />} />
         <Route path="/wishlist" element={<Wishlist/>} />
-        <Route path="/singleproduct" element={<Singleproduct/>} />
+        <Route path="/singleproduct/:id" element={<Singleproduct/>} />
         <Route path="/order" element={<CheckOut/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />

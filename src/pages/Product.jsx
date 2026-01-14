@@ -65,8 +65,9 @@ export const Product = () => {
             <div key={product.id}>
               <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg  ' style={{ width: 'auto', position: 'relative' }}>
                 <div className='Product-Details flex gap-3 mt-3 '>
+                   <Link to={`/singleproduct/${product.id}`}> 
                   <img className='product-image p-3' src={product.image} alt="" style={{ height: '150px', objectFit: 'contain', width: '150px' }} />
-
+</Link>
                   <div>
                     <h5 className="card-title">{product.title.slice(0, 20)}...</h5>
                     <p className='product-description'>{product.description.slice(0, 30)}...</p>
