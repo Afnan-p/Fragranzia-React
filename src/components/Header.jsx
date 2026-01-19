@@ -80,7 +80,7 @@ export const Header = () => {
                 <FaBell />
               </div>
               <div className="w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100">
-                <FaUser />
+                <Link to="/profile"><FaUser /></Link>
               </div>
             </div>
 
@@ -124,7 +124,8 @@ export const Header = () => {
               <FaBell />
             </div>
             <div className="w-10 h-10 flex items-center justify-center rounded-full border">
-              <FaUser />
+             
+             <Link to="/profile"><FaUser /></Link>
             </div>
           </div>
 

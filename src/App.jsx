@@ -15,6 +15,10 @@ import { SignUp } from './pages/SignUp'
 import { Login } from './pages/Login'
 import { Wishlist } from './pages/Wishlist'
 import Singleproduct from './pages/Singleproduct'
+import Profile from './pages/user/profile/Profile'
+import Usersidebar from './pages/user/profile/Usersidebar'
+import Orderdetails from './pages/user/profile/Orderdetails'
+import Paymentuser from './pages/user/profile/Paymentuser '
 // import { Userprofile } from './pages/Userprofile'
 function App() {
   const [count, setCount] = useState(0)
@@ -33,6 +37,8 @@ function App() {
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
         {/* <Route path="/user" element={<Userprofile/>} /> */}
+        <Route path="/profile" element={<Profile />} />
+      
       </Routes>
 
 {/* </Router> */}
