@@ -1,28 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { HeroSlider } from '../components/HeroSlider'
-import { Header } from '../components/Header'
+import { HeroSlider } from '../../../components/HeroSlider'
+import { Header } from '../../../components/Header'
 import "./Home.css";
 import { FaTruckFast } from "react-icons/fa6";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import { RiCustomerService2Fill } from "react-icons/ri";
-import Bottle1 from "../assets/bottle5.jpg";
-import Bottle2 from "../assets/bottle6editted.png";
-import Bottle3 from "../assets/bottle7editted.png";
-import Sticker from "../assets/Group 1.png";
-import Img1 from "../assets/limitedediton.jpg";
-import Img2 from "../assets/newarivals.png";
-import Img3 from "../assets/bestseller.png";
-import Iconic from "../assets/lastbackground.webp";
+import Bottle1 from '../../../assets/bottle5.jpg';
+// import Bottle2 from "../assets/bottle6editted.png";
+// import Bottle3 from "../assets/bottle7editted.png";
+// import Sticker from "../assets/Group 1.png";
+import Img1 from "../../../assets/limitedediton.jpg";
+import Img2 from "../../../assets/newarivals.png";
+import Img3 from "../../../assets/bestseller.png";
+import Iconic from "../../../assets/lastbackground.webp";
 import { FaStar } from "react-icons/fa";
 // import './variables.css';
 // import './global.css';
-import { FeaturedCollection } from '../components/FeaturedCollection';
-import { ExploreCategories } from '../components/ExploreCategories';
-import { Footer } from '../components/Footer';
-import { Product } from './Product';
-import { AddToCart } from './AddToCart';
-import { Maincontext } from '../context/Maincontext';
-import { Cartcontaxt } from '../context/Cartcontext';
+import { FeaturedCollection } from '../../../components/FeaturedCollection';
+import { ExploreCategories } from '../../../components/ExploreCategories';
+import { Footer } from '../../../components/Footer';
+// import { Product } from './Product';
+// import { AddToCart } from '../cart/AddToCart';
+import { Maincontext } from '../../../context/Maincontext';
+import { Cartcontaxt } from '../../../context/Cartcontext';
 import { Link } from 'react-router-dom';
 
 

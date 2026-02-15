@@ -1,18 +1,20 @@
 import { useState } from 'react'
 
 import './App.css'
-
-import { Home } from './pages/Home'
-import { Product } from './pages/Product'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AddToCart } from './pages/AddToCart'
+
+import { Home } from './pages/user/home/Home'
+import { Product } from './pages/user/product/Product'
+import { AddToCart } from './pages/user/cart/AddToCart'
 // import "./styles/variables.css";
 import "./style/global.css";
-import { CheckOut } from './pages/CheckOut'
-import { SignUp } from './pages/SignUp'
-import { Login } from './pages/Login'
-import { Wishlist } from './pages/Wishlist'
-import Singleproduct from './pages/Singleproduct'
+import { SignUp } from './pages/user/signUp/SignUp';
+import { Login } from './pages/user/login/Login'
+import { Wishlist } from './pages/user/wishlist/Wishlist';
+import Singleproduct from './pages/user/singleproduct/Singleproduct';
+import ProfilePage from './pages/user/Profile/ProfilePage';
+import { Checkout } from './pages/user/checkout/Checkout ';
+
 
    {/* ===== ADMIN ROUTES ===== */}
 /* ADMIN DASHBOARD */
@@ -28,8 +30,6 @@ import Settings from './pages/admin/dashboard/Settings';
 import AddProduct from "./pages/admin/dashboard/AddProduct";
 
 
-import ProfilePage from './pages/user/Profile/ProfilePage';
-
 
 
 // import { Userprofile } from './pages/Userprofile'
@@ -40,32 +40,32 @@ function App() {
 
 {/* <Router> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/cart" element={<AddToCart />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/product" element={<Product/>} />
+        <Route path="/cart" element={<AddToCart/>} />
         <Route path="/wishlist" element={<Wishlist/>} />
         <Route path="/singleproduct/:id" element={<Singleproduct/>} />
-        <Route path="/order" element={<CheckOut/>} />
+        <Route path="/order" element={<Checkout/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/login" element={<Login/>} />
         {/* <Route path="/user" element={<Userprofile/>} /> */}
        
       
          {/* ===== ADMIN ROUTES ===== */}
-         <Route path="/admin/dashboard" element={<Dashboard />} />
-      <Route path="/admin/orders" element={<Orders />} />
-      <Route path="/admin/products" element={<Products />} />
-      <Route path="/admin/customers" element={<Customers />} />
-      <Route path="/admin/inventory" element={<Inventory />} />
-      <Route path="/admin/reviews" element={<Reviews />} />
-      <Route path="/admin/coupons" element={<Coupons />} />
-      <Route path="/admin/payments" element={<Payments />} />
-      <Route path="/admin/settings" element={<Settings />} />
-      <Route path="/admin/add-product" element={<AddProduct />} />
+         <Route path="/admin/dashboard" element={<Dashboard/>} />
+      <Route path="/admin/orders" element={<Orders/>} />
+      <Route path="/admin/products" element={<Products/>} />
+      <Route path="/admin/customers" element={<Customers/>} />
+      <Route path="/admin/inventory" element={<Inventory/>} />
+      <Route path="/admin/reviews" element={<Reviews/>} />
+      <Route path="/admin/coupons" element={<Coupons/>} />
+      <Route path="/admin/payments" element={<Payments/>} />
+      <Route path="/admin/settings" element={<Settings/>} />
+      <Route path="/admin/add-product" element={<AddProduct/>} />
 
 
 
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/profile" element={<ProfilePage/>} />
 
       </Routes>
 

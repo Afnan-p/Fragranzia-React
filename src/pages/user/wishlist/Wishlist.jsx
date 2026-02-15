@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { Cartcontaxt } from '../context/Cartcontext';
-import { Wishlistcontaxt } from '../context/Wishlistcontext';
+import { Cartcontaxt } from '../../../context/Cartcontext';
+import { Wishlistcontaxt } from '../../../context/Wishlistcontext';
 import { FaStar } from "react-icons/fa";
-import { Header } from '../components/Header';
+import { Header } from '../../../components/Header';
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
-import { Maincontext } from '../context/Maincontext';
+import { Maincontext } from '../../../context/Maincontext';
 
 
 

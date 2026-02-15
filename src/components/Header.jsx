@@ -1,6 +1,5 @@
 import React from "react";
 import { FaShoppingCart, FaBell, FaUser } from "react-icons/fa";
-import { Product } from "../pages/Product";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
@@ -35,7 +34,7 @@ export const Header = () => {
   </li>
 
   <li className="hover:text-[#0d2a46] transition">
-    <Link to="/products">Product</Link>
+    <Link to="/product">Product</Link>
   </li>
   <li className="hover:text-[#0d2a46] transition">
     <Link to="/cart">Cart</Link>
@@ -47,7 +46,7 @@ export const Header = () => {
     <Link to="/wishlist">Wishlist</Link>
   </li>
   <li className="hover:text-[#0d2a46] transition">
-    <Link to="/singleproduct">Singleproduct</Link>
+    <Link to="/singleproduct/:id">Singleproduct</Link>
   </li>
 
   <li className="hover:text-[#0d2a46] transition">
@@ -92,15 +91,13 @@ export const Header = () => {
       <div id="mobileMenu" className="lg:hidden hidden px-6 pb-4">
         <ul className="flex flex-col gap-4 text-gray-700 font-medium">
           <li><Link to ="/">Home</Link> </li>
-          <li><Link to="/products">Products</Link></li>
+          <li><Link to="/product">Products</Link></li>
            <li> <Link to="/cart">Cart</Link> </li>
            <li> <Link to="/wishlist">Wishlist</Link> </li>
    
      <li>    <Link to="/order">Checkout</Link>
   </li>
 
-
- 
           <li>Gifting</li>
           <li>About</li>
         </ul>

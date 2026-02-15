@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 
-import c1 from '../assets/bestseller.png'
-import side from '../assets/bestseller.png'
+import c1 from '../../../assets/bestseller.png'
+// import side from '../assets/bestseller.png'
 import {
   FaHeart,
   FaShareNodes,
@@ -16,14 +16,14 @@ import {
   FaInstagram,
   FaTag,
 } from "react-icons/fa6";
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+import { Header } from '../../../components/Header';
+import { Footer } from '../../../components/Footer';
 
 import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Maincontext } from '../context/Maincontext';
-import { Product } from './Product';
-import { Cartcontaxt } from '../context/Cartcontext';
+import { Maincontext } from '../../../context/Maincontext';
+// import { Product } from './Product';
+import { Cartcontaxt } from '../../../context/Cartcontext';
 import toast, { Toaster } from 'react-hot-toast';
 
 

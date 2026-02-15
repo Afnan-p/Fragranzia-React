@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { FaStar } from "react-icons/fa";
-import { Cartcontaxt } from '../context/Cartcontext';
-import { Header } from '../components/Header';
+import { Cartcontaxt } from '../../../context/Cartcontext';
+import { Header } from '../../../components/Header';
 import { GrClose } from "react-icons/gr";
 import { CiSquarePlus } from "react-icons/ci";
 import { CiSquareMinus } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 import "./AddToCart.css"
-import { Footer } from '../components/Footer';
+import { Footer } from '../../../components/Footer';
 import { FaOpencart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 

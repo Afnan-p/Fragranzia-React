@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './Product.css';
+import '../product/Product.css'
 import { FaStar } from "react-icons/fa";
 // import { IoIosArrowForward } from "react-icons/io";
 {/* <IoIosArrowForward /> */ }
 import { IoFilter } from "react-icons/io5";
-import { Footer } from '../components/Footer';
+import { Footer } from '../../../components/Footer';
 import { Link } from "react-router-dom";
-import { Cartcontaxt } from '../context/Cartcontext';
-import { Header } from '../components/Header';
-import { Maincontext } from '../context/Maincontext';
-import { Wishlistcontaxt } from '../context/Wishlistcontext';
+import { Cartcontaxt } from '../../../context/Cartcontext';
+import { Header } from '../../../components/Header';
+import { Maincontext } from '../../../context/Maincontext';
+import { Wishlistcontaxt } from '../../../context/Wishlistcontext';
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 
@@ -26,7 +26,7 @@ export const Product = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
       <div className='Blue-Line mt-5'>
         <p>ENJOY FESTIVE DISCOUNTS!FREE SHIPPING ABOVE 999!</p>
       </div>
@@ -111,7 +111,7 @@ export const Product = () => {
         </div>
 
       </div>
-      <Footer />
+      <Footer/>
     </>
   )
 }
