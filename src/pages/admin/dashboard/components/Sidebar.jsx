@@ -5,6 +5,7 @@ const menu = [
   "Orders",
   "Products",
   "Add Product",
+  "Add Category",
   "Customers",
   "Inventory",
   "Reviews",
