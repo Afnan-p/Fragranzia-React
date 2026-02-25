@@ -34,25 +34,25 @@ export const AddToCart = () => {
           {cartItems.length === 0 ? (
             <p style={{ color: "red", fontSize: '20px', margin: '10px' }}> Your Fragranzia Cart Is empty <FaOpencart /></p>
           ) : (cartItems.map((product) => (
-            <div key={product.id}>
+            <div key={product._id}>
               <div className='Product-Card m-3 border border-gray-400 rounded-lg shadow-md hover:shadow-lg w-full sm:w-[95%] md:w-[700px] lg:w-[700px] p-2 '>
                 <div className='content flex  sm:flex-row gap-3 mt-3 '>
                   <div>
                     <div className="img">
-                      <img className='product-image p-3 w-full sm:w-40 h-40 object-contain ' src={product.image} alt="" />
+                      <img className='product-image p-3 w-full sm:w-40 h-40 object-contain ' src={`http://localhost:5000/uploads/${product.images?.[0]}`} alt="" />
                     </div>
                     <div className='cart-item-Quantity flex justify-center items-center border border-black-300 w-20 p-1 gap-2 mx-10 mb-2'>
-                      {product.quantity > 1 ? (<button onClick={() => DecrementFunction(product.id)}><CiSquareMinus size={25} /></button>)
-                        : (<button onClick={() => Removeitem(product.id)} ><MdDeleteOutline size={25} /></button>)}
+                      {product.quantity > 1 ? (<button onClick={() => DecrementFunction(product._id)}><CiSquareMinus size={25} /></button>)
+                        : (<button onClick={() => Removeitem(product._id)} ><MdDeleteOutline size={25} /></button>)}
                       <p>{product.quantity}</p>
-                      <button onClick={() => Countfunction(product.id)} ><CiSquarePlus size={25} /></button>
+                      <button onClick={() => Countfunction(product._id)} ><CiSquarePlus size={25} /></button>
 
                     </div>
 
                   </div>
 
                   <div>
-                    <h5 className="card-title">{product.title.slice(0, 20)}...</h5>
+                    <h5 className="card-title">{product.name.slice(0, 20)}...</h5>
                     <p className='product-description'>{product.description.slice(0, 30)}...</p>
                     <p className="card-text ">{product.category}</p>
                     <h6>Rs {product.price  * product.quantity}/-</h6>
@@ -62,7 +62,7 @@ export const AddToCart = () => {
                       ))}
                     </div>
                     <div className='Cart-close-btn'>
-                      <button onClick={() => Removeitem(product.id)} style={{ border: 'none', background: 'none' }}>
+                      <button onClick={() => Removeitem(product._id)} style={{ border: 'none', background: 'none' }}>
                         <GrClose />
                       </button>
                     </div>

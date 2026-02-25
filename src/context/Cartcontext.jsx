@@ -15,44 +15,39 @@ const  [buyList,setBuyList]=useState([])
 
   
     function handleAddToCart(id) {
-      const result=data.find((product)=>product.id ===id);
-      const exist=cartItems.some((item)=>item.id === id);
+  const result = data.find((product) => product._id === id);
+  const exist = cartItems.some((item) => item._id === id);
 
-      if(!exist){
-       setCartItems([...cartItems, { ...result, quantity: 1 }])
-       toast.success('Successfully Added!')
-      }else{
-       toast.error("This Item Already In Cart.")
-
-      }
-      // toast.success('Successfully Added!')
-      
-      console.log("Cart Items:", cartItems);
-
-    }
-
-    function Removeitem(id) {
-      const remove =cartItems.filter((item)=>item.id!==id);
-      setCartItems(remove);
-    }
-
-    function Countfunction(id) {
-      setCartItems(prev=>
-        prev.map((item)=>item.id===id ?{ ...item, quantity: item.quantity + 1 }:item)
-      )
-    }
-
-   function DecrementFunction(id) {
-  setCartItems(prev =>
-    prev.map(item =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-      // .filter(item => item.quantity > 0)
+  if (!exist && result) {
+    setCartItems([...cartItems, { ...result, quantity: 1 }]);
+    toast.success("Successfully Added!");
+  } else {
+    toast.error("This Item Already In Cart.");
+  }
+}
+function Removeitem(id) {
+  const remove = cartItems.filter((item) => item._id !== id);
+  setCartItems(remove);
+}
+   function Countfunction(id) {
+  setCartItems((prev) =>
+    prev.map((item) =>
+      item._id === id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    )
   );
 }
-function Buyfunction(id) {
+   function DecrementFunction(id) {
+  setCartItems((prev) =>
+    prev.map((item) =>
+      item._id === id && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    )
+  );
+}
+function Buyfunction() {
   // const Buyresult=cartItems.find((product)=>product.id ===id);
   // setBuyList(prev => [...prev, Buyresult])
  setBuyList(cartItems)

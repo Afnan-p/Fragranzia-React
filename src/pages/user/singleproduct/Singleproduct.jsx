@@ -41,15 +41,14 @@ const Singleproduct = () => {
 
   function productdetails() {
 
-    const result=data.find((item)=>item.id==id)
-    
-    console.log(result,"result");
-    
+     if (data.length > 0) {
+    const result = data.find((item) => item._id === id);
     setProduct(result);
   }
-  useEffect(() => {
-    productdetails();
-  }, [data]);
+  }
+useEffect(() => {
+  productdetails();
+}, [data, id]);
   
   return (
     <div>
@@ -69,19 +68,19 @@ const Singleproduct = () => {
 
       {/* PRODUCT IMAGES SECTION */}
       <div className="flex gap-10 flex-col lg:flex-row px-10">
+        
 
         {/* Small images */}
         <div className="flex flex-col gap-3 ">
-          <img src={c1} className="w-28 h-28 border-4 border-indigo-900 object-cover" />
-          <img src={c1} className="w-28 h-28 border-4 border-indigo-900 object-cover" />
-          <img src={c1} className="w-28 h-28 border-4 border-indigo-900 object-cover" />
+          <img src={`http://localhost:5000/uploads/${product.images?.[0]}`} className="w-28 h-28 border-4 border-indigo-900 object-cover" />
+          <img src={`http://localhost:5000/uploads/${product.images?.[0]}`} className="w-28 h-28 border-4 border-indigo-900 object-cover" />
+          <img src={`http://localhost:5000/uploads/${product.images?.[0]}`} className="w-28 h-28 border-4 border-indigo-900 object-cover" />
         </div>
 
         {/* Main image */}
        
             <div className="relative">
-          {/* <img src={product.image} className="w-[420px] h-[420px] object-cover" /> */}
-          <img src={product?.image} className="w-[420px] h-[420px] object-contain" />
+          <img src={`http://localhost:5000/uploads/${product.images?.[0]}`} className="w-[420px] h-[420px] object-contain" />
 
           
           {/* LIKE & SHARE */}
@@ -100,8 +99,8 @@ const Singleproduct = () => {
           <p className="text-red-600 mt-1">Hurry! Only few stocks left</p>
 
           <div className="flex items-center gap-3 mt-4">
-            <span className="text-2xl font-bold">Rs:{product?.price}</span>
-            <span className="line-through text-gray-500">Rs 2000</span>
+            <span className="text-2xl font-bold">Rs:{product?.salePrice}</span>
+            <span className="line-through text-gray-500">Rs:{product?.price}</span>
             <span className="text-green-600 font-bold">61% OFF</span>
           </div>
 
@@ -137,7 +136,7 @@ const Singleproduct = () => {
               <button className="bg-blue-700 text-white px-6 py-2 rounded-md">Purchase Now</button>
             </a>
            
-              <button className="bg-gray-800 text-white px-6 py-2 rounded-md" onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
+              <button className="bg-gray-800 text-white px-6 py-2 rounded-md" onClick={() => handleAddToCart(product._id)}>Add to Cart</button>
           
           </div>
         </div>
@@ -151,19 +150,20 @@ const Singleproduct = () => {
      <div className='Home-Products-Slide flex overflow-x-scroll  '>
        
        {data.map((product) => (
-            <div key={product.id}>
+            <div key={product._id}>
               <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg 'style={{width:'400px'}}>
                 <div className='flex gap-3 mt-3 '>
-                      <Link to={`/singleproduct/${product.id}`}> 
-                 <img className='product-image p-3' src={product.image} alt="" style={{ height: '150px', objectFit: 'contain',width: '150px' }} />
+                      <Link to={`/singleproduct/${product._id}`}> 
+                 <img className='product-image p-3'src={`http://localhost:5000/uploads/${product.images?.[0]}`} alt="" style={{ height: '150px', objectFit: 'contain',width: '150px' }} />
 
                       </Link>
 
                   <div>
-                    <h5 className="card-title">{product.title.slice(0, 20)}...</h5>
+                    <h5 className="card-title">{product.name.slice(0, 20)}...</h5>
                     <p className='product-description'>{product.description.slice(0, 30)}...</p>
                     <p className="card-text ">{product.category}</p>
-                    <h6>Rs {product.price }/-</h6>
+                    <h6>Rs {product.price}/-</h6>
+                    <h6>Rs {product.salePrice}/-</h6>
                   </div>
                 </div>
                 <div className='rating-stars flex px-3  gap-1 ' >
@@ -172,7 +172,7 @@ const Singleproduct = () => {
                   ))}
                 </div>
                 <div className=' p-3 '>
-                <button className="Home-AddCart-btn w-full  mt-2 " onClick={() => handleAddToCart(product.id)}>
+                <button className="Home-AddCart-btn w-full  mt-2 " onClick={() => handleAddToCart(product._id)}>
                    Add to Cart
                 </button>
                 </div>

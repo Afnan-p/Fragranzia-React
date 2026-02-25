@@ -60,55 +60,80 @@ export const Product = () => {
 
       <div className='Home-Featured-Collections mt-4  '>
         {/* <h2 style={{ fontSize: '35px' }}><b>Featured Collections</b></h2> */}
-        <div className='Home-Products-Slide flex grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center '>
-          {data.map((product) => (
-            <div key={product.id}>
-              <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg  ' style={{ width: 'auto', position: 'relative' }}>
-                <div className='Product-Details flex gap-3 mt-3 '>
-                   <Link to={`/singleproduct/${product.id}`}> 
-                  <img className='product-image p-3' src={product.image} alt="" style={{ height: '150px', objectFit: 'contain', width: '150px' }} />
-</Link>
-                  <div>
-                    <h5 className="card-title">{product.title.slice(0, 20)}...</h5>
-                    <p className='product-description'>{product.description.slice(0, 30)}...</p>
-                    <p className="card-text ">{product.category}</p>
-                    <h6>Rs {product.price}/-</h6>
-                  </div>
-                </div>
-<div
-                      className="Like-heart"
-                      style={{ position: "absolute", right: "2px" ,top:'0px'}}
-                    >
-                      <button
-                        className="Like-icon-btn mt-3"
-                        onClick={() => hundlewishlist(product.id)}
-                      >
-                        {likedList.includes(product.id) ? (
-                          <FaHeart size={28} color="red" />
-                        ) : (
-                          <FaRegHeart size={28} color="black" />
-                        )}
-                      </button>
-                    </div>
+        <div className='Home-Products-Slide grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
+  {data.map((product) => (
+    <div key={product._id}>
+      <div
+        className='Product-Card m-3 border border-gray-200 rounded-xl shadow-md hover:shadow-xl transition duration-300'
+        style={{ position: 'relative' }}
+      >
+        <div className='Product-Details flex gap-3 mt-3 p-3'>
+          
+          <Link to={`/singleproduct/${product._id}`}>
+            <img
+              className='product-image'
+              src={`http://localhost:5000/uploads/${product.images[0]}`}
+              alt={product.name}
+              style={{ height: '150px', objectFit: 'cover', width: '150px' }}
+            />
+          </Link>
 
+          <div>
+            <h5 className="card-title font-semibold">
+              {product.name?.slice(0, 20)}...
+            </h5>
 
-            
+            <p className='product-description text-gray-500'>
+              {product.description?.slice(0, 30)}...
+            </p>
 
-                <div className='rating-stars flex px-3  gap-1 ' >
-                  {Array.from({ length: 5 }).map((v, i) => (
-                    <FaStar key={i} />
-                  ))}
-                </div>
-                <div className=' p-3 '>
-                  <button className="Home-AddCart-btn w-full  mt-2 " onClick={() => handleAddToCart(product.id)}>
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
+            <h6 className="font-bold">
+              Rs {product.price}/-
+            </h6>
+            <h6 className="font-bold">
+              Rs {product.salePrice }/-
+            </h6>
+          </div>
+        </div>
 
-            </div>
+        {/* Wishlist Button */}
+        <div
+          className="Like-heart"
+          style={{ position: "absolute", right: "10px", top: "10px" }}
+        >
+          <button
+            className="Like-icon-btn"
+            onClick={() => hundlewishlist(product._id)}
+          >
+            {likedList.includes(product._id) ? (
+              <FaHeart size={22} color="red" />
+            ) : (
+              <FaRegHeart size={22} color="black" />
+            )}
+          </button>
+        </div>
+
+        {/* Rating */}
+        <div className='rating-stars flex px-3 gap-1'>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <FaStar key={i} />
           ))}
         </div>
+
+        {/* Add to Cart */}
+        <div className='p-3'>
+          <button
+            className="Home-AddCart-btn w-full mt-2"
+            onClick={() => handleAddToCart(product._id)}
+          >
+            Add to Cart
+          </button>
+        </div>
+
+      </div>
+    </div>
+  ))}
+</div>
 
       </div>
       <Footer/>

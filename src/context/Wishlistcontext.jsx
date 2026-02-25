@@ -12,21 +12,26 @@ const {data,setData}=useContext(Maincontext);
   const [wishlist, setWishlist] = useState([])
 
    function hundlewishlist(id) {
-    const result = data.find((value) => value.id === id)
-    const exist = wishlist.some((item) => item.id === id)
+    const result = data.find((value) => value._id === id);
+  const exist = wishlist.some((item) => item._id === id);
 
-    if (!exist) {
-      const list = [...wishlist, result]
-      setWishlist(list)
-      toast.success('Successfully Added!')
-    } else {
-      toast.error("This Item Already in Cart.")
-    }
+    
+  if (!exist && result) {
+    setWishlist([...wishlist, result]);
+    toast.success("Added to Wishlist 💖");
+  } else {
+    toast.error("Already in Wishlist!");
+  }
      if (likedList.includes(id)) {
       setLikedList(likedList.filter((itemId) => itemId !== id)); // remove if already liked
     } else {
       setLikedList([...likedList, id]); // add if not liked
     }
+
+    if (exist) {
+  setWishlist(wishlist.filter(item => item._id !== id));
+  toast("Removed from Wishlist ❌");
+}
 
   }
 

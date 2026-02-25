@@ -1,12 +1,13 @@
 import React, { createContext, useEffect, useState } from 'react'
-
+const API_URL = "http://localhost:5000/api/product";
 
 export const Maincontext=createContext();
 export const Mainprovider = ({children}) => {
+  
          const [data, setData] = useState([]);
           
                    useEffect(() => {
-                     fetch('https://fakestoreapi.com/products?limit=10')
+                     fetch("http://localhost:5000/api/product")
                        .then(res => res.json())
                        .then(json => setData(json))
                      // .catch(err => console.log('Error fetching data:', err));
