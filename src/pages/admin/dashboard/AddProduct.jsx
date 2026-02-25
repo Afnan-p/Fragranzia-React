@@ -2,40 +2,40 @@ import { useState } from "react";
 import PageWrapper from "./components/PageWrapper";
 const API_URL = "http://localhost:5000/api/product";
 import axios from "axios";
-import { Login } from "../../user/login/Login";
 const AddProduct = () => {
 
-   const [product ,setProduct] = useState({
-     name: '',
+  const [product, setProduct] = useState({
+    name: '',
     description: '',
     price: '',
     salePrice: '',
     category: '',
     stock: '',
   })
-  const [image,setImage]=useState(null);
+  const [image, setImage] = useState(null);
   //  const [loading, setLoading] = useState(false);
-   const [message, setMessage] = useState("");
-   const [stored,setStored]=useState([])
+  const [message, setMessage] = useState("");
+  const [stored, setStored] = useState([])
 
-   // Handle normal input fields
-    const handlechange = (e)=>{
-      // console.log(e.target.value);  
-      const {name ,value} = e.target
-      // console.log(name,value,"value");
-      
-      setProduct({...product,[name]:value})
+  // Handle normal input fields
+  const handlechange = (e) => {
+    // console.log(e.target.value);  
+    const { name, value } = e.target
+    // console.log(name,value,"value");
 
-    }
-    if(!product) return
-      // Submit Form
-    async function onhandlesubmit(e) {
-      e.preventDefault();
+    setProduct({ ...product, [name]: value })
 
-       if (!image) {
-      setMessage("Please select an image");
-      return;
-    }
+  }
+  // Submit Form
+  async function onhandlesubmit(e) {
+    e.preventDefault();
+
+    try {
+      if (!image) {
+        setMessage("Please select an image");
+        return;
+
+      }
 
       const formData = new FormData();
 
@@ -48,10 +48,11 @@ const AddProduct = () => {
       formData.append("stock", product.stock);
 
       // append image
-      formData.append("image", image);     
+      formData.append("image", image);
       const res = await axios.post(API_URL, formData);
-      alert("Product added");
-      console.log(res.data);
+      alert("Product Added Successfully");
+      console.log("productttttt",res.data);
+      
 
       // Reset form
       setProduct({
@@ -65,7 +66,12 @@ const AddProduct = () => {
 
       setImage(null);
       setStored(res.data.data)
-console.log(stored,"asdfghjkl;");
+      console.log(stored, "asdfghjkl;");
+
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong");
+    }
 
 
   };

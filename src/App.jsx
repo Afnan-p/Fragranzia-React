@@ -29,6 +29,7 @@ import Payments from './pages/admin/dashboard/Payments';
 import Settings from './pages/admin/dashboard/Settings';
 import AddProduct from "./pages/admin/dashboard/AddProduct";
 import Addcategory from './pages/admin/dashboard/AddCategory';
+import { Category } from './pages/admin/dashboard/Catogory';
 
 
 
@@ -64,6 +65,7 @@ function App() {
       <Route path="/admin/settings" element={<Settings/>} />
       <Route path="/admin/add-product" element={<AddProduct/>} />
       <Route path="/admin/add-category" element={<Addcategory/>} />
+      <Route path="/admin/category" element={<Category/>} />
 
 
 
