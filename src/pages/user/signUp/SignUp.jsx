@@ -1,4 +1,3 @@
-
 import {
   FaGoogle,
   FaFacebookF,
@@ -7,12 +6,55 @@ import {
   FaLock,
   FaEyeSlash,
 } from "react-icons/fa";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
-  return (
+  const navigate = useNavigate();
 
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      return alert("Passwords do not match");
+    }
+
+    try {
+      await axios.post(
+        "http://localhost:5000/api/auth/register",
+        {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }
+      );
+
+      alert("Registration Successful ✅");
+      navigate("/login");
+    } catch (error) {
+      alert(error.response?.data?.message || "Something went wrong");
+    }
+  };
+
+  return (
     <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center gap-10 px-4 py-10 bg-gray-50">
-      {/* IMAGE SECTION */}
+      
+      {/* IMAGE SECTION (UNCHANGED) */}
       <div
         className="relative w-full max-w-md lg:max-w-lg h-[420px] sm:h-[480px] rounded-tr-[180px] rounded-bl-[180px] overflow-hidden bg-cover bg-center"
         style={{
@@ -33,6 +75,7 @@ export const SignUp = () => {
 
       {/* FORM SECTION */}
       <div className="w-full max-w-md bg-white p-6 sm:p-8 rounded-2xl shadow-xl">
+        
         {/* Social Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <button className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-md hover:bg-gray-100 transition">
@@ -49,51 +92,71 @@ export const SignUp = () => {
           Or sign up with email
         </p>
 
-        {/* Inputs */}
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
+
+          {/* Username */}
           <div className="relative">
             <FaUserCircle className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             <input
               type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
               placeholder="Enter your username"
+              required
               className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
+          {/* Email */}
           <div className="relative">
             <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter your E-Mail"
+              required
               className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
+          {/* Password */}
           <div className="relative">
             <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             <FaEyeSlash className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer" />
             <input
               type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               placeholder="Enter your password"
+              required
               className="w-full pl-10 pr-10 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
+          {/* Confirm Password */}
           <div className="relative">
             <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             <FaEyeSlash className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer" />
             <input
               type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
               placeholder="Confirm your password"
+              required
               className="w-full pl-10 pr-10 py-3 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
           </div>
 
           {/* Checkbox */}
           <div className="flex items-center gap-2 text-xs text-gray-600">
-            <input type="checkbox" className="accent-teal-600" />
+            <input type="checkbox" className="accent-teal-600" required />
             <span>
-              Agree with{' '}
+              Agree with{" "}
               <a href="#" className="text-teal-600 underline">
                 Terms & Conditions
               </a>
@@ -109,14 +172,17 @@ export const SignUp = () => {
           </button>
 
           <p className="text-center text-sm text-gray-600 mt-4">
-            Already have an account?{' '}
-            <a href="/login" className="text-teal-600 font-medium hover:underline">
+            Already have an account?{" "}
+            <a
+              onClick={() => navigate("/login")}
+              className="text-teal-600 font-medium hover:underline cursor-pointer"
+            >
               Log in
             </a>
           </p>
+
         </form>
       </div>
     </div>
   );
-}
-
+};

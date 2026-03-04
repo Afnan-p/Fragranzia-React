@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PageWrapper from "./components/PageWrapper";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5000/api/product";
 const IMG_URL = "http://localhost:5000/uploads";
@@ -29,10 +30,12 @@ const Products = () => {
       <h2 className="text-2xl font-bold text-gray-800">
         Product Management
       </h2>
-
-      <button className="px-5 py-2 bg-gradient-to-r from-black to-gray-700 text-white rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+<Link to= "/admin/add-product">
+<button className="px-5 py-2 bg-gradient-to-r from-black to-gray-700 text-white rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
         + Add Product
       </button>
+</Link>
+      
     </div>
 
     <div className="overflow-x-auto">
@@ -85,7 +88,7 @@ const Products = () => {
               {/* Category */}
               <td className="py-4 px-6">
                 <span className="px-3 py-1 text-xs rounded-full bg-gray-100 text-gray-700 font-medium">
-                  {product.category}
+                  {product.category?.name}
                 </span>
               </td>
 

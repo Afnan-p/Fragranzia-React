@@ -1,8 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageWrapper from "./components/PageWrapper";
-const API_URL = "http://localhost:5000/api/product";
 import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
+
+const API_URL = "http://localhost:5000/api/product";
+const CATEGORY_API = "http://localhost:5000/api/category";
+
+
 const AddProduct = () => {
+  const [categories, setCategories] = useState([]);
+
+useEffect(() => {
+  fetchCategories();
+}, []);
+
+const fetchCategories = async () => {
+  try {
+    const res = await axios.get(CATEGORY_API);
+    setCategories(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   const [product, setProduct] = useState({
     name: '',
@@ -50,8 +69,7 @@ const AddProduct = () => {
       // append image
       formData.append("image", image);
       const res = await axios.post(API_URL, formData);
-      alert("Product Added Successfully");
-      console.log("productttttt",res.data);
+      // console.log("productttttt",res.data);
       
 
       // Reset form
@@ -67,10 +85,12 @@ const AddProduct = () => {
       setImage(null);
       setStored(res.data.data)
       console.log(stored, "asdfghjkl;");
+      toast.success("Product Added Successfully");
 
     } catch (error) {
       console.log(error);
       alert("Something went wrong");
+      
     }
 
 
@@ -159,10 +179,14 @@ const AddProduct = () => {
               required
               className="w-full border px-4 py-2 rounded-lg"
             >
-              <option value="">Select</option>
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-              <option value="Unisex">Unisex</option>
+               <option value="">Select Category</option>
+
+  {categories.map((cat) => (
+    <option key={cat._id} value={cat._id}>
+      {cat?.name}
+    </option>
+  ))}
+
             </select>
           </div>
 
@@ -201,6 +225,10 @@ const AddProduct = () => {
             // disabled={loading}
             className="bg-black text-white px-6 py-2 rounded-lg w-full"
           > Add Product
+          <Toaster
+                  position="top-center"
+                  reverseOrder={false}
+                />
             {/* {loading ? "Adding..." : "Add Product"} */}
           </button>
 

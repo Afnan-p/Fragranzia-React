@@ -23,26 +23,32 @@ import { Footer } from '../../../components/Footer';
 // import { AddToCart } from '../cart/AddToCart';
 import { Maincontext } from '../../../context/Maincontext';
 import { Cartcontaxt } from '../../../context/Cartcontext';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 
 
 export const Home = () => {
   const {handleAddToCart} =useContext(Cartcontaxt);
   const {data,setData} =useContext(Maincontext);
+  const navigate =useNavigate()
+      useEffect(() => {
+        const fetchhome = async () => {
+          try {
+            const token = localStorage.getItem("token");
+            await axios.get("http://localhost:5000/api/auth/home",{
+              headers:{Authorization: `Bearer ${token}`}
+            });
+            
+          } catch (error) {
+            navigate("/")
+          }
+        };
+        fetchhome();
+      }, []); 
 
-
-// const {data,setData}=useContext(Maincontext);
-//       useEffect(() => {
-//         fetch('https://fakestoreapi.com/products?limit=10')
-//           .then(res => res.json())
-//           .then(json => setData(json))
-//         // .catch(err => console.log('Error fetching data:', err));
-//       }, []);
-//       // console.log(data,"dataaaa");
-      
+      // console.log(data,"dataaaa");    
   return (
-
     <>
       <Header />
       <div className='Blue-Line '>

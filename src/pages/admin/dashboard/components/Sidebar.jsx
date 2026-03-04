@@ -4,7 +4,7 @@ const menu = [
   "Dashboard",
   "Orders",
   "Products",
-  "Catogory",
+  "Category",
   "Add Product",
   "Add Category",
   "Customers",

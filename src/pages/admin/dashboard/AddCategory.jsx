@@ -8,10 +8,11 @@ import axios from 'axios'
 const Addcategory = () => {
    const [stored ,setStored]=useState([])
 
-  const [category,setCategory]=useState({
-    name :"",
-    description:"",
-  })
+ const [category, setCategory] = useState({
+  name: "",
+  description: "",
+  status: "Active",
+});
 
    const handlechange = (e)=>{
       console.log(e.target.value);    
@@ -24,21 +25,25 @@ const Addcategory = () => {
 
     
     async function onhandlesubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-   if (!category.name || !category.description) return;
+  if (!category.name || !category.description) return;
+
+  try {
     const res = await axios.post(API_URL, category);
+
+    console.log("Category Created:", res.data);
+
     setCategory({
-      name: '',
-      description: '',
-    })
-    setStored(res.data)
-    console.log("esdrftghyjklDetails", stored);
-    // setDatas(prev =>console.log(prev))  
-    // ;
-    // setAllData(prev => [...prev, res.data]);
-    // fetchtasks()
+      name: "",
+      description: "",
+      status: "Active",
+    });
+
+  } catch (error) {
+    console.log(error);
   }
+}
   return (
       <PageWrapper title="Add Category">
             <div className="min-h-screen bg-gray-100">
@@ -100,12 +105,24 @@ const Addcategory = () => {
 
             <div className="flex items-center gap-6">
               <label className="flex items-center gap-2">
-                <input type="radio" name="status" className="accent-blue-600" />
+                <input
+  type="radio"
+  name="status"
+  value="Active"
+  checked={category.status === "Active"}
+  onChange={handlechange}
+/>
                 <span>Active</span>
               </label>
 
               <label className="flex items-center gap-2">
-                <input type="radio" name="status" className="accent-blue-600" />
+                <input
+  type="radio"
+  name="status"
+  value="Inactive"
+  checked={category.status === "Inactive"}
+  onChange={handlechange}
+/>
                 <span>Inactive</span>
               </label>
             </div>
