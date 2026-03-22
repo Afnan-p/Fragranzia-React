@@ -6,6 +6,7 @@ const ProfileSidebar = ({
 }) => {
   const menuItems = [
     { id: "profile", label: "Profile" },
+    { id: "editprofile", label: "EditProfile" },
     { id: "orders", label: "Orders" },
     { id: "wishlist", label: "Wishlist" },
     { id: "shopping", label: "Shopping Activity" },

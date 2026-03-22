@@ -20,7 +20,7 @@ export const AddToCart = () => {
   // console.log(cartItems,"cartitems");
   console.log(Buyfunction,"buyyyyyyyy");
   
-  const GrandToatal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const GrandToatal = cartItems.reduce((total, item) => total +(item.product?.price || 0)* item.quantity, 0);
 
   return (
 
@@ -33,41 +33,41 @@ export const AddToCart = () => {
         <h2 style={{ fontSize: '35px' }}><b>Cart Products</b></h2>
           {cartItems.length === 0 ? (
             <p style={{ color: "red", fontSize: '20px', margin: '10px' }}> Your Fragranzia Cart Is empty <FaOpencart /></p>
-          ) : (cartItems.map((product) => (
-            <div key={product._id}>
+          ) : (cartItems.map((item) => (
+            <div key={item._id}>
               <div className='Product-Card m-3 border border-gray-400 rounded-lg shadow-md hover:shadow-lg w-full sm:w-[95%] md:w-[700px] lg:w-[700px] p-2 '>
                 <div className='content flex  sm:flex-row gap-3 mt-3 '>
                   <div>
                     <div className="img">
-                      <img className='product-image p-3 w-full sm:w-40 h-40 object-contain ' src={`http://localhost:5000/uploads/${product.images?.[0]}`} alt="" />
+                      <img className='product-image p-3 w-full sm:w-40 h-40 object-contain ' src={`http://localhost:5000/uploads/${item.product?.images?.[0]}`} alt="" />
                     </div>
                     <div className='cart-item-Quantity flex justify-center items-center border border-black-300 w-20 p-1 gap-2 mx-10 mb-2'>
-                      {product.quantity > 1 ? (<button onClick={() => DecrementFunction(product._id)}><CiSquareMinus size={25} /></button>)
-                        : (<button onClick={() => Removeitem(product._id)} ><MdDeleteOutline size={25} /></button>)}
-                      <p>{product.quantity}</p>
-                      <button onClick={() => Countfunction(product._id)} ><CiSquarePlus size={25} /></button>
+                      {item.quantity > 1 ? (<button onClick={() => DecrementFunction(item.product._id)}><CiSquareMinus size={25} /></button>)
+                        : (<button onClick={() => Removeitem(item.product._id)} ><MdDeleteOutline size={25} /></button>)}
+                      <p>{item.quantity}</p>
+                      <button onClick={() => Countfunction(item.product._id)} ><CiSquarePlus size={25} /></button>
 
                     </div>
 
                   </div>
 
                   <div>
-                    <h5 className="card-title">{product.name.slice(0, 20)}...</h5>
-                    <p className='product-description'>{product.description.slice(0, 30)}...</p>
-                    <p className="card-text ">{product.category}</p>
-                    <h6>Rs {product.price  * product.quantity}/-</h6>
+                    <h5 className="card-title">{item.product?.name}...</h5>
+                    <p className='product-description'>{item.product?.description}...</p>
+                    {/* <p className="card-text ">{product.product.category}</p> */}
+                    <h6>Rs {item.product?.price * item.quantity || 0}/-</h6>
                     <div className='rating-stars flex   gap-1 ' >
                       {Array.from({ length: 5 }).map((v, i) => (
                         <FaStar key={i} />
                       ))}
                     </div>
                     <div className='Cart-close-btn'>
-                      <button onClick={() => Removeitem(product._id)} style={{ border: 'none', background: 'none' }}>
+                      <button onClick={() => Removeitem(item.product._id)} style={{ border: 'none', background: 'none' }}>
                         <GrClose />
                       </button>
                     </div>
                     <div className="Cart-Buttons flex   md:flex-row  justify-between my-3 gap-5 " >
-                      <div className='Cart-Delete-btn text-center border border-gray-300 p-2 w-20'><button onClick={() => Removeitem(product.id)}>Delete</button></div>
+                      <div className='Cart-Delete-btn text-center border border-gray-300 p-2 w-20'><button onClick={() =>Removeitem(item.product._id)}>Delete</button></div>
                       <div className='Cart-Share-btn text-center border border-gray-300 p-2 w-20'><button>Share</button></div>
                       {/* <div className='Cart-Buy-btn  text-center border border-gray-300 p-2 w-20'><button onClick={()=>Buyfunction(product.id)}> <Link to="/order">Buy</Link></button></div> */}
 
@@ -98,8 +98,9 @@ export const AddToCart = () => {
          <div className="Buy-btn w-full  mt-2 p-3 text-center mt-5">
 
        {/* <Link to="/order">  <button> Proceed to Buy </button></Link> */}
-       <button onClick={Buyfunction}> <Link to="/order">Proceed to Buy</Link></button>
-
+<Link to="/order">
+  <button onClick={Buyfunction}>Proceed to Buy</button>
+</Link>
          </div>
       </div>
       )}

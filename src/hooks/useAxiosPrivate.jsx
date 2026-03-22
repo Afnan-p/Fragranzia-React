@@ -5,7 +5,7 @@ import { axiosPrivate } from "../axios";
 
 
 const useAxiosPrivate = () => {
-    const { auth, setAuth } = useAuth();
+    // const { auth, setAuth } = useAuth();
 
     useEffect(() => {
         axiosPrivate.interceptors.request.use(
@@ -17,7 +17,7 @@ const useAxiosPrivate = () => {
                   }
 
                 if (!config.headers['Authorization']) {
-                    config.headers['Authorization'] = auth?.accessToken;
+                    // config.headers['Authorization'] = auth?.accessToken;
                 }
 
  
@@ -37,7 +37,8 @@ const useAxiosPrivate = () => {
                 return Promise.reject(error)
             }
         );
-    }, [auth])
+    }, [])
+    // }, [auth])
 
     return axiosPrivate
 }

@@ -16,14 +16,42 @@ const AdminService = () => {
         const response = await axiosPrivate.post("/api/product",data);
         return response.data;
     };
+     const deleteProductData = async (ProductId) => {
+        const response = await axiosPrivate.delete(`/api/product/${ProductId}`);
+        return response.data;
+    };
 
-    const putProductData = async (ProductId, data) => {
-        const response = await axiosPrivate.put(`/api/product/${ProductId}`, data);
+ // ========================================category management ========================================   
+    const postCategory = async (data) => {
+        const response = await axiosPrivate.post("/api/category",data);
+        return response.data;
+    };
+
+    const getCategory = async () => {
+        const response = await axiosPrivate.get("/api/category");
+        return response;
+    };
+      const deletecategory = async (CategoryId) => {
+        const response = await axiosPrivate.delete(`/api/category/${CategoryId}`);
         return response.data;
     };
     
-    const deleteProductData = async (ProductId) => {
-        const response = await axiosPrivate.delete(`/api/product/${ProductId}`);
+
+    // const putProductData = async (ProductId, data) => {
+    //     const response = await axiosPrivate.put(`/api/product/${ProductId}`, data);
+    //     return response.data;
+    // };
+
+    
+   
+// ======================================== user management ========================================
+
+    const getuser = async () => {
+        const response = await axiosPrivate.get("/api/user/fetchuser");
+        return response.data;
+    };
+     const userdelete = async (UserId) => {
+        const response = await axiosPrivate.delete(`/api/user/delete/${UserId}`);
         return response.data;
     };
 
@@ -31,8 +59,13 @@ const AdminService = () => {
     return { 
         getProductData,
         postProductData,
-        putProductData,
-        deleteProductData
+        // putProductData,
+        deleteProductData,
+        postCategory,
+        getCategory,
+        getuser,
+        userdelete,
+        deletecategory
        
     };
 };

@@ -7,7 +7,7 @@ export const Mainprovider = ({children}) => {
          const [data, setData] = useState([]);
           
                    useEffect(() => {
-                     fetch("http://localhost:5000/api/product")
+                     fetch(API_URL)
                        .then(res => res.json())
                        .then(json => setData(json))
                      // .catch(err => console.log('Error fetching data:', err));

@@ -4,10 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("userInfo"));
+  const user = localStorage.getItem("accessToken");
 
   const handleLogout = () => {
-    localStorage.removeItem("userInfo");
+    localStorage.removeItem("accessToken");
     navigate("/login");
   };
 

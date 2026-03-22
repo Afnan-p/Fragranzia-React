@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import PageWrapper from "./components/PageWrapper";
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
+import AdminService from "../../../service/admin-api-service/AdminService";
 
-const API_URL = "http://localhost:5000/api/product";
-const CATEGORY_API = "http://localhost:5000/api/category";
-
+// const API_URL = "http://localhost:5000/api/product";
+// const CATEGORY_API = "http://localhost:5000/api/category";
 
 const AddProduct = () => {
   const [categories, setCategories] = useState([]);
+const {postProductData,getCategory}=AdminService()
+
 
 useEffect(() => {
   fetchCategories();
@@ -16,7 +18,7 @@ useEffect(() => {
 
 const fetchCategories = async () => {
   try {
-    const res = await axios.get(CATEGORY_API);
+    const res = await getCategory();
     setCategories(res.data);
   } catch (error) {
     console.log(error);
@@ -68,7 +70,8 @@ const fetchCategories = async () => {
 
       // append image
       formData.append("image", image);
-      const res = await axios.post(API_URL, formData);
+      // const res = await axios.post(API_URL, formData);
+      const res = await postProductData(formData);
       // console.log("productttttt",res.data);
       
 

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./routes/ProtectedRoute";
-import AdminRoute from "./routes/AdminRoute";
+import ProtectedRoute from "./protectRoutes/LoginProtectedRoute";
+import AdminRoute from "./protectRoutes/AdminProtectRoute";
 
 /* USER PAGES */
 import { Home } from "./pages/user/home/Home";
@@ -17,7 +17,6 @@ import { Login } from "./pages/user/login/Login";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import Orders from "./pages/admin/dashboard/Orders";
 import Products from "./pages/admin/dashboard/Products";
-import Customers from "./pages/admin/dashboard/Customers";
 import Inventory from "./pages/admin/dashboard/Inventory";
 import Reviews from "./pages/admin/dashboard/Reviews";
 import Coupons from "./pages/admin/dashboard/Coupons";
@@ -26,6 +25,9 @@ import Settings from "./pages/admin/dashboard/Settings";
 import AddProduct from "./pages/admin/dashboard/AddProduct";
 import Addcategory from "./pages/admin/dashboard/AddCategory";
 import { Category } from "./pages/admin/dashboard/Catogory";
+import Users from "./pages/admin/dashboard/Users";
+import AdminProtectRoute from "./protectRoutes/AdminProtectRoute";
+import LoginProtectedRoute from "./protectRoutes/LoginProtectedRoute";
 
 
 
@@ -36,27 +38,26 @@ function App() {
   return (
     <Routes>
 
-      {/* ===== PUBLIC ROUTES ===== */}
+      {/*PUBLIC ROUTES*/}
       <Route path="/" element={<Home />} />
       <Route path="/product" element={<Product />} />
       <Route path="/singleproduct/:id" element={<Singleproduct />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
 
-      {/* ===== PROTECTED USER ROUTES ===== */}
-      <Route element={<ProtectedRoute />}>
+      {/*PROTECTED USER ROUTES*/}
+      <Route element={<LoginProtectedRoute />}>
         <Route path="/cart" element={<AddToCart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/order" element={<Checkout />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
-      {/* ===== ADMIN ROUTES ===== */}
-      <Route element={<AdminRoute />}>
+      {/*ADMIN ROUTES*/}
+      <Route element={<AdminProtectRoute />}>
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/orders" element={<Orders />} />
         <Route path="/admin/products" element={<Products />} />
-        <Route path="/admin/customers" element={<Customers />} />
         <Route path="/admin/inventory" element={<Inventory />} />
         <Route path="/admin/reviews" element={<Reviews />} />
         <Route path="/admin/coupons" element={<Coupons />} />
@@ -65,6 +66,7 @@ function App() {
         <Route path="/admin/add-product" element={<AddProduct />} />
         <Route path="/admin/add-category" element={<Addcategory />} />
         <Route path="/admin/category" element={<Category />} />
+        <Route path="/admin/Users" element={<Users/>} />
       </Route>
 
     </Routes>

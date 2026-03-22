@@ -31,22 +31,7 @@ import axios from 'axios';
 export const Home = () => {
   const {handleAddToCart} =useContext(Cartcontaxt);
   const {data,setData} =useContext(Maincontext);
-  const navigate =useNavigate()
-      useEffect(() => {
-        const fetchhome = async () => {
-          try {
-            const token = localStorage.getItem("token");
-            await axios.get("http://localhost:5000/api/auth/home",{
-              headers:{Authorization: `Bearer ${token}`}
-            });
-            
-          } catch (error) {
-            navigate("/")
-          }
-        };
-        fetchhome();
-      }, []); 
-
+    
       // console.log(data,"dataaaa");    
   return (
     <>
@@ -152,7 +137,7 @@ export const Home = () => {
 <div className='Home-Offerzone'>
    <h2 style={{ fontSize: '35px' }}><b>Offer Zone</b></h2>
           <div className='Home-Offerzone flex overflow-x-scroll '>
-            {data.map((product) => (
+           {data?.map((product) => (
   <div key={product._id}>
     <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg' style={{ width: '400px' }}>
       

@@ -8,9 +8,13 @@ import {
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
+import useAuth from "../../../hooks/useAuth";
 
 export const Login = () => {
   const navigate = useNavigate();
+    const { setAuth } = useAuth();
+
 
   const [formData, setFormData] = useState({
     email: "",
@@ -32,15 +36,41 @@ export const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://localhost:5000/api/login",
         formData
       );
 
-      // Save user info + token
-      localStorage.setItem("token", JSON.stringify(res.token));
+     if(res?.data?.success){
+       const username = res?.data?.userInfo?.username
+// const email = res?.data?.userInfo?.email
+const role = res?.data?.userInfo?.role
+const token = res?.data?.userInfo?.token
+    // console.log(res.data,"datataaa");
 
-      alert("Login Successful ✅");
-      navigate("/"); // home page lekku redirect
+
+      // Save user info + token
+    //  localStorage.setItem("userInfo", JSON.stringify(res.data));
+        localStorage.setItem("accessToken", token);
+        localStorage.setItem("role", role);
+        // localStorage.setItem("profileImage", image);
+        localStorage.setItem("username", username);
+        setAuth({ token, role , username });
+
+     toast.success("Login Successful ✅")
+
+           setTimeout(() => {
+
+          if (role === "admin") {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/");
+        }
+      }, 1500);
+   } else {
+      toast.error("login Failed");
+    }
+     // alert("Login Successful ✅");
+      // navigate("/"); // home page lekku redirect
     } catch (error) {
       setErrorMessage(
         error.response?.data?.message || "Invalid credentials"

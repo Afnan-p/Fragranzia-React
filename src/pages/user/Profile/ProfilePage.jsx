@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import ProfileSidebar from "./components/ProfileSidebar";
 import ProfileInfo from "./components/ProfileInfo";
 import AddressDetails from "./components/AddressDetails";
@@ -11,6 +10,7 @@ import Orders from "./components/Orders";
 import Wishlist from "./components/Wishlist";
 import { Header } from "../../../components/Header";
 import { Footer } from "../../../components/Footer";
+// import Editprofile from "./components/Editprofile";
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -47,15 +47,17 @@ const ProfilePage = () => {
         <div className="flex-1 p-4 sm:p-6 space-y-6">
           {activeTab === "profile" && (
               <>
-            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6"> */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <ProfileInfo />
   <AddressDetails />
-  <AccountInfo />
-              <PersonalPreferences />
-{/* </div> */}
+  {/* <AccountInfo /> */}
+              {/* <PersonalPreferences /> */}
+</div>
             </>
           )}
 
+
+          {/* {activeTab === "editprofile" && <Editprofile/>} */}
           {activeTab === "orders" && <Orders />}
           {activeTab === "wishlist" && <Wishlist />}
           {activeTab === "security" && <SecuritySettings />}

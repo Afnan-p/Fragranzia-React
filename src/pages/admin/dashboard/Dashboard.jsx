@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import PageWrapper from "./components/PageWrapper";
+import { Admincontext } from "../../../context/Adminproductcontext";
 
 const Dashboard = () => {
+  const {products}=useContext(Admincontext)
+  
   return (
     <PageWrapper title="Dashboard">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[
-          ["Products", "120"],
+          ["Products", products.length],
           ["Orders", "350"],
           ["Revenue", "₹1,25,000"],
           ["Customers", "210"],

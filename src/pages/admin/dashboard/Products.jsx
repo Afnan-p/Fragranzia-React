@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
+
 import PageWrapper from "./components/PageWrapper";
 import { Link } from "react-router-dom";
+import { Admincontext } from "../../../context/Adminproductcontext";
 
-const API_URL = "http://localhost:5000/api/product";
 const IMG_URL = "http://localhost:5000/uploads";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+const {products,Removeproducts}=useContext(Admincontext)
+ 
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    try {
-      const res = await axios.get(API_URL);
-      setProducts(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+ 
 
   return (
    <PageWrapper title="Products">
@@ -61,7 +51,7 @@ const Products = () => {
               {/* Product Info */}
               <td className="py-4 px-6 flex items-center gap-4">
                 <img
-                  src={`${IMG_URL}/${product.images[0]}`}
+                  src={`${IMG_URL}/${product.images?.[0]}`}
                   alt={product.name}
                   className="w-14 h-14 object-cover rounded-xl shadow-md"
                 />
@@ -114,7 +104,7 @@ const Products = () => {
                     Edit
                   </button>
 
-                  <button className="px-4 py-1 bg-red-900 text-white rounded-lg hover:bg-red-600 transition">
+                  <button onClick={() => Removeproducts(product._id)} className="px-4 py-1 bg-red-900 text-white rounded-lg hover:bg-red-600 transition">
                     Delete
                   </button>
                 </div>

@@ -1,12 +1,15 @@
 import React from 'react'
 import PageWrapper from './components/PageWrapper'
 import { useState } from 'react'
-const API_URL = "http://localhost:5000/api/category";
+// const API_URL = "http://localhost:5000/api/category";
 
 import axios from 'axios'
+import AdminService from '../../../service/admin-api-service/AdminService';
 
 const Addcategory = () => {
-   const [stored ,setStored]=useState([])
+  //  const [stored ,setStored]=useState([])
+
+   const {postCategory}=AdminService()
 
  const [category, setCategory] = useState({
   name: "",
@@ -30,7 +33,8 @@ const Addcategory = () => {
   if (!category.name || !category.description) return;
 
   try {
-    const res = await axios.post(API_URL, category);
+    // const res = await axios.post(API_URL, category);
+    const res = await postCategory(category);
 
     console.log("Category Created:", res.data);
 

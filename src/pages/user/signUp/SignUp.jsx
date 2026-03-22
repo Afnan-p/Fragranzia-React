@@ -36,7 +36,7 @@ export const SignUp = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "http://localhost:5000/api/register",
         {
           username: formData.username,
           email: formData.email,

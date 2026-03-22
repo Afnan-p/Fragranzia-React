@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import PageWrapper from './components/PageWrapper'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AdminService from '../../../service/admin-api-service/AdminService';
 
 
-const API_URL = "http://localhost:5000/api/category";
+// const API_URL = "http://localhost:5000/api/category";
 
 export const Category = () => {
+    const {getCategory,deletecategory}=AdminService()
+
   const [category,setCategory] = useState([]);
   
     useEffect(() => {
@@ -15,13 +18,28 @@ export const Category = () => {
 
   const fetchCategory = async () => {
     try {
-      const res = await axios.get(API_URL);
+      const res = await getCategory();
       setCategory(res.data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  
+const handleDelete = async (id) => {
+  try {
+
+     if (!window.confirm("Delete this category?")) return;
+    await deletecategory(id);
+
+     fetchCategory();
+
+  } catch (error) {
+
+    console.log("Delete failed");
+
+  }
+};
 
   return (
     <PageWrapper title="Category">
@@ -95,9 +113,12 @@ export const Category = () => {
                     Edit
                   </button>
 
-                  <button className="px-4 py-1 bg-red-900 text-white rounded-lg hover:bg-red-600 transition">
-                    Delete
-                  </button>
+                  <button
+          onClick={() => handleDelete(category._id)}
+          className="bg-red-900 text-white px-3 py-1 rounded hover:bg-red-600"
+        >
+          Delete
+        </button>
                 </div>
               </td>
 

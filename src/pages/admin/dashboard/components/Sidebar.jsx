@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 
 const menu = [
   "Dashboard",
+  "Users",
   "Orders",
   "Products",
   "Category",
   "Add Product",
   "Add Category",
-  "Customers",
   "Inventory",
   "Reviews",
   "Coupons",
@@ -17,7 +17,7 @@ const menu = [
 
 const Sidebar = () => {
   return (
-    <aside className="w-64 bg-white   rounded-lg shadow text-black min-h-screen p-6">
+    <aside className="w-64 bg-white   rounded-lg shadow text-black min-h-screen p-4">
       <h1 className="text-2xl font-bold text-blue-400 mb-8">
         Fragranzia
       </h1>
