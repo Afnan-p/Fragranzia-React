@@ -16,13 +16,15 @@ export const Cartprovider = ({children}) => {
 const  [buyList,setBuyList]=useState([])
 
 
-const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  const token = userInfo?.token;
+// const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+const token = localStorage.getItem("accessToken");
+  // const token = userInfo?.token;
+  console.log("TOKEN:", token);
  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  headers: {
+    Authorization: token,
+  },
+};
 
 
 // ==========================
@@ -113,6 +115,7 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     }
   };
+  
 // function Removeitem(id) {
 //   const remove = cartItems.filter((item) => item._id !== id);
 //   setCartItems(remove);

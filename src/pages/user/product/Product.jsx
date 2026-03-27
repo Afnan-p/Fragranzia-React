@@ -18,7 +18,7 @@ export const Product = () => {
   //  const [data, setData] = useState([]);
   const { handleAddToCart } = useContext(Cartcontaxt);
   const { data, setData } = useContext(Maincontext);
-  const { hundlewishlist, likedList } = useContext(Wishlistcontaxt);
+  const { handleAddToWishlist,wishlist  } = useContext(Wishlistcontaxt);
 
 
 
@@ -37,7 +37,7 @@ export const Product = () => {
           <div style={{ fontSize: '20px', direction: 'none' }} className='flex gap-3 '>
 
             <p><Link to="/">Home</Link></p>
-            <p><Link to="/products">Product</Link></p>
+            <p><Link >Product</Link></p>
           </div>
 
         </div>
@@ -103,9 +103,9 @@ export const Product = () => {
         >
           <button
             className="Like-icon-btn"
-            onClick={() => hundlewishlist(product._id)}
+            onClick={() => handleAddToWishlist(product._id)}
           >
-            {likedList.includes(product._id) ? (
+            {wishlist.some(item => item._id === product._id) ? (
               <FaHeart size={22} color="red" />
             ) : (
               <FaRegHeart size={22} color="black" />

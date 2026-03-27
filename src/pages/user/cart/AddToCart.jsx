@@ -25,93 +25,154 @@ export const AddToCart = () => {
   return (
 
 
+<div className="Cart">
+  <Header />
 
-    <div className='Cart  '>
-      <Header />
-      <div className="Cart-Content flex justify-between   ">
-        <div className='Cart-Products-Slide '>
-        <h2 style={{ fontSize: '35px' }}><b>Cart Products</b></h2>
-          {cartItems.length === 0 ? (
-            <p style={{ color: "red", fontSize: '20px', margin: '10px' }}> Your Fragranzia Cart Is empty <FaOpencart /></p>
-          ) : (cartItems.map((item) => (
-            <div key={item._id}>
-              <div className='Product-Card m-3 border border-gray-400 rounded-lg shadow-md hover:shadow-lg w-full sm:w-[95%] md:w-[700px] lg:w-[700px] p-2 '>
-                <div className='content flex  sm:flex-row gap-3 mt-3 '>
-                  <div>
-                    <div className="img">
-                      <img className='product-image p-3 w-full sm:w-40 h-40 object-contain ' src={`http://localhost:5000/uploads/${item.product?.images?.[0]}`} alt="" />
-                    </div>
-                    <div className='cart-item-Quantity flex justify-center items-center border border-black-300 w-20 p-1 gap-2 mx-10 mb-2'>
-                      {item.quantity > 1 ? (<button onClick={() => DecrementFunction(item.product._id)}><CiSquareMinus size={25} /></button>)
-                        : (<button onClick={() => Removeitem(item.product._id)} ><MdDeleteOutline size={25} /></button>)}
-                      <p>{item.quantity}</p>
-                      <button onClick={() => Countfunction(item.product._id)} ><CiSquarePlus size={25} /></button>
+  <div className="Cart-Content flex justify-center gap-10">
 
-                    </div>
+    {/* LEFT SIDE - PRODUCTS */}
+    <div className="Cart-Products-Slide flex-1">
+      <h2 className="text-3xl font-bold mb-5">Cart Products</h2>
 
-                  </div>
+      {cartItems.length === 0 ? (
+        <p className="text-red-500 text-lg">
+          Your Fragranzia Cart Is empty <FaOpencart />
+        </p>
+      ) : (
+        cartItems.map((item) => (
+          <div key={item._id}>
 
-                  <div>
-                    <h5 className="card-title">{item.product?.name}...</h5>
-                    <p className='product-description'>{item.product?.description}...</p>
-                    {/* <p className="card-text ">{product.product.category}</p> */}
-                    <h6>Rs {item.product?.price * item.quantity || 0}/-</h6>
-                    <div className='rating-stars flex   gap-1 ' >
-                      {Array.from({ length: 5 }).map((v, i) => (
-                        <FaStar key={i} />
-                      ))}
-                    </div>
-                    <div className='Cart-close-btn'>
-                      <button onClick={() => Removeitem(item.product._id)} style={{ border: 'none', background: 'none' }}>
-                        <GrClose />
-                      </button>
-                    </div>
-                    <div className="Cart-Buttons flex   md:flex-row  justify-between my-3 gap-5 " >
-                      <div className='Cart-Delete-btn text-center border border-gray-300 p-2 w-20'><button onClick={() =>Removeitem(item.product._id)}>Delete</button></div>
-                      <div className='Cart-Share-btn text-center border border-gray-300 p-2 w-20'><button>Share</button></div>
-                      {/* <div className='Cart-Buy-btn  text-center border border-gray-300 p-2 w-20'><button onClick={()=>Buyfunction(product.id)}> <Link to="/order">Buy</Link></button></div> */}
+            {/* CARD */}
+            <div className="Product-Card flex w-full max-w-[650px] gap-5 p-4 mb-5 border border-gray-200">
+              {/* <div className="Product-Card mx-auto max-w-[650px] w-full p-4"> */}
 
+              {/* IMAGE */}
+              <img
+                className="w-32 h-32 object-cover rounded-lg"
+                src={`http://localhost:5000/uploads/${item.product?.images?.[0]}`}
+                alt=""
+              />
 
-                    </div>
-                  </div>
+              {/* DETAILS */}
+              <div className="flex flex-col justify-between w-full">
+
+                {/* TOP */}
+                <div>
+                  <h5 className="card-title mb-1">
+                    {item.product?.name}
+                  </h5>
+
+                  <p className="product-description mb-2">
+                    {item.product?.description}
+                  </p>
+
+                  <h6 className="mb-3">
+                    Rs {item.product?.price * item.quantity}/-
+                  </h6>
                 </div>
 
+                {/* QUANTITY + REMOVE */}
+                <div className="flex items-center justify-between">
+
+                  {/* QUANTITY BOX */}
+                  <div className="flex items-center border rounded-md overflow-hidden">
+
+                    {item.quantity > 1 ? (
+                      <button
+                        onClick={() => DecrementFunction(item.product._id)}
+                        className="px-3 py-1 bg-gray-200"
+                      >
+                        <CiSquareMinus />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => Removeitem(item.product._id)}
+                        className="px-3 py-1 bg-red-100"
+                      >
+                        <MdDeleteOutline />
+                      </button>
+                    )}
+
+                    <span className="px-4 font-semibold">
+                      {item.quantity}
+                    </span>
+
+                    <button
+                      onClick={() => Countfunction(item.product._id)}
+                      className="px-3 py-1 bg-gray-200"
+                    >
+                      <CiSquarePlus />
+                    </button>
+
+                  </div>
+
+                  {/* REMOVE */}
+                  <button
+                    onClick={() => Removeitem(item.product._id)}
+                    className="px-3 py-2 border border-red-400 text-red-500 rounded-md hover:bg-red-100"
+                  >
+                    Remove
+                  </button>
+
+                </div>
+
+                {/* BOTTOM */}
+                <div className="flex items-center justify-between mt-3">
+
+                  {/* STARS */}
+                  <div className="flex gap-1 text-yellow-400">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
+
+                  {/* SHARE */}
+                  <button className="Cart-Share-btn">
+                    Share
+                  </button>
+
+                </div>
 
               </div>
-
             </div>
-          )))}
-          
 
-        </div>
-          <div className="cart-checkout-all mt-16 ">
-      {cartItems.length>0 &&( 
-      <div className="cart-checkout border border-gray-400 rounded-lg shadow-md hover:shadow-lg w-100 px-8 py-4  mx-4  w-full  sm:w-[90%] md:w-[700px] lg:w-[400px] ">
-        <h1 style={{ fontSize: '25px' }}><b>Check out</b></h1>
-        <div className='flex  justify-between  border-b-2 border-gray-300'>
-<p>Price({cartItems.length})</p>
-<p>Rs:{GrandToatal}/-</p>
-        </div>
-        <div> 
-          <p className='mt-5'>Total:  <b>Rs {GrandToatal}/-</b> </p>
-        </div>
-         <div className="Buy-btn w-full  mt-2 p-3 text-center mt-5">
-
-       {/* <Link to="/order">  <button> Proceed to Buy </button></Link> */}
-<Link to="/order">
-  <button onClick={Buyfunction}>Proceed to Buy</button>
-</Link>
-         </div>
-      </div>
+          </div>
+        ))
       )}
-      </div>
-      </div>
-    
-
-      <div className="footer ">
-      <Footer />
-
-      </div>
     </div>
+
+    {/* RIGHT SIDE - CHECKOUT */}
+    {cartItems.length > 0 && (
+      <div className="cart-checkout p-6 w-[350px] h-fit sticky top-24">
+        {/* <div className="cart-checkout-all mt-16 h-fit sticky top-24"> */}
+
+        <h2 className="text-xl font-bold mb-3">Check out</h2>
+
+        <div className="flex justify-between border-b pb-2">
+          <p>Price ({cartItems.length})</p>
+          <p>Rs {GrandToatal}/-</p>
+        </div>
+
+        <p className="mt-4 font-semibold">
+          Total: Rs {GrandToatal}/-
+        </p>
+
+        <Link to="/order">
+          <button
+            onClick={Buyfunction}
+            className="Buy-btn w-full mt-5"
+          >
+            Proceed to Buy
+          </button>
+        </Link>
+
+      </div>
+    )}
+
+  </div>
+
+  <Footer />
+</div>
+   
   )
 }

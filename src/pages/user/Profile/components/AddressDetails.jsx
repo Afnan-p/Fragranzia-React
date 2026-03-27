@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import AddAddressModal from "./AddAddressModal";
 const AddressDetails = () => {
   const [addresses, setAddresses] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const fetchAddress = async () => {
     const token = localStorage.getItem("accessToken");
@@ -29,7 +30,7 @@ const AddressDetails = () => {
   {addresses.length === 0 ? (
     <>
       <p className="mb-2">No address added</p>
-      <button className="px-3 py-2 bg-black text-white rounded">
+      <button onClick={() => setShowModal(true)} className="px-3 py-2 bg-black text-white rounded">
         + Add Address
       </button>
     </>
@@ -45,17 +46,27 @@ const AddressDetails = () => {
   {addr.zip}, {addr.country}
 </p>
 <p className="text-sm">📞 {addr.phone}</p>
-          <p>Phone: {addr.phone}</p> 
         </div>
       ))}
 
-      <button className="mt-3 px-3 py-2 bg-black text-white rounded">
+     <button
+        onClick={() => setShowModal(true)} 
+        className="mt-3 px-3 py-2 bg-black text-white rounded"
+      >
         + Add Another Address
       </button>
     </>
   )}
+  {showModal && (
+  <AddAddressModal
+    onClose={() => setShowModal(false)}
+    refresh={fetchAddress}
+  />
+)}
 </div>
+
   );
+
 };
 
 export default AddressDetails;

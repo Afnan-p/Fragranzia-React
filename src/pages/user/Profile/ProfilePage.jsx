@@ -10,7 +10,7 @@ import Orders from "./components/Orders";
 import Wishlist from "./components/Wishlist";
 import { Header } from "../../../components/Header";
 import { Footer } from "../../../components/Footer";
-// import Editprofile from "./components/Editprofile";
+import Editprofile from "./components/Editprofile";
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -57,7 +57,7 @@ const ProfilePage = () => {
           )}
 
 
-          {/* {activeTab === "editprofile" && <Editprofile/>} */}
+          {activeTab === "editprofile" && <Editprofile/>}
           {activeTab === "orders" && <Orders />}
           {activeTab === "wishlist" && <Wishlist />}
           {activeTab === "security" && <SecuritySettings />}

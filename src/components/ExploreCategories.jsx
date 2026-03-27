@@ -10,8 +10,9 @@ export const ExploreCategories = () => {
              <div>
        <h2 style={{ fontSize: '35px' }}><b>Explore Categories</b></h2>
         </div>
-    <div> <h2 style={{ fontSize: '35px', cursor:'pointer'}}><b><Link to="/products">See All</Link></b></h2>
+    <div> <h2 style={{ fontSize: '35px', cursor:'pointer'}}><b><Link to="/product">See All</Link></b></h2>
      </div>
+     
         </div>
    
      <div className='Home-Explore-Categories  mb-10  '>

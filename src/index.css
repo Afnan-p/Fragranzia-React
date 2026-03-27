@@ -1,1 +1,51 @@
 @import "tailwindcss";
+.icon-btn {
+  @apply w-10 h-10 flex items-center justify-center rounded-full border hover:bg-gray-100 transition duration-300 hover:scale-110;
+}
+
+.btn-primary {
+  @apply px-4 py-1 bg-slate-800 text-white rounded-md hover:bg-black transition;
+}
+
+.btn-outline {
+  @apply px-4 py-1 border rounded-md hover:bg-gray-100 transition;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.3s ease;
+}
+/* 🔥 Card hover */
+.Product-Card {
+  transition: all 0.3s ease;
+}
+
+.Product-Card:hover {
+  transform: translateY(-10px) scale(1.00);
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.10);
+}
+
+/* 🔥 Button animation */
+.Home-AddCart-btn {
+  transition: all 0.3s ease;
+}
+
+.Home-AddCart-btn:hover {
+  transform: scale(1.05);
+  background-color: #081c2e;
+}
+
+/* 🔥 Offer cards glow */
+.Offer-Boxes1:hover,
+.Offer-Boxes2:hover,
+.Offer-Boxes3:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+/* 🔥 Smooth scroll feel */
+html {
+  scroll-behavior: smooth;
+}

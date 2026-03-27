@@ -1,0 +1,27 @@
+.Product-Card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.Product-Card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 12px 25px rgba(0,0,0,0.12);
+}
+
+/* Fade animation */
+.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}

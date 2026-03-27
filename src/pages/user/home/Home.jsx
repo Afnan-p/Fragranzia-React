@@ -25,13 +25,17 @@ import { Maincontext } from '../../../context/Maincontext';
 import { Cartcontaxt } from '../../../context/Cartcontext';
 import { Link, Navigate, useNavigate} from 'react-router-dom';
 import axios from 'axios';
-
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 export const Home = () => {
   const {handleAddToCart} =useContext(Cartcontaxt);
   const {data,setData} =useContext(Maincontext);
-    
+    useEffect(() => {
+  AOS.init({ duration: 800 });
+}, []);
       // console.log(data,"dataaaa");    
   return (
     <>
@@ -39,14 +43,27 @@ export const Home = () => {
       <div className='Blue-Line '>
         <p>ENJOY FESTIVE DISCOUNTS!FREE SHIPPING ABOVE 999!</p>
       </div>
-      <HeroSlider />
+
+
+      <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+  <HeroSlider />
+</motion.div>
 
 
 
       <div className="Special-deals px-4 py-6 ">
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-6 ">
 
-          <div className="Offer-Boxes1 flex justify-between">
+          <motion.div 
+  className="Offer-Boxes1 flex justify-between"
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
             <div>
               <h2 className="font-semibold">Unlock Exclusive Offers</h2>
               <p>Discover special deals tailored just for you!</p>
@@ -54,18 +71,27 @@ export const Home = () => {
             <div>
               <img className='Home-Bottle1' src={Bottle1} alt="" /></div>
 
-          </div>
+          </motion.div>
 
-          <div className="Offer-Boxes2  " style={{ position: 'relative', width: 'auto' }}>
+
+          <motion.div className="Offer-Boxes2  " style={{ position: 'relative', width: 'auto' }} 
+          initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+          >
             <div>
               <h4 className="font-semibold">Gift Scents to Your Loved Ones</h4>
               <p>Make your moments more beautiful</p>
             </div>
             {/* <div className='Home-Bottle2' style={{ position: 'absolute', top: '30px', left: '60px' }}> <img src={Bottle2} alt="" />
             </div> */}
-          </div>
+           </motion.div>
 
-          <div className="Offer-Boxes3">
+          <motion.div className="Offer-Boxes3"
+           initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+          >
             <div> <h4 className="font-semibold">Luxury Scents Starting at $4,000</h4>
             </div>
 
@@ -73,7 +99,7 @@ export const Home = () => {
               <img className='Sticker' src={Sticker} alt="" />
               <img className='Home-Bottle3' src={Bottle3} alt="" />
             </div> */}
-          </div>
+           </motion.div>
         </div>
       </div>
 
@@ -81,7 +107,9 @@ export const Home = () => {
 
 
 
-      <div className='Provide-content flex justify-between items-center  gap-6 '>
+      <motion.div
+  className='Provide-content flex justify-between items-center gap-6'
+>
         <div className='flex gap-5'>
           <FaTruckFast size={35} />
           <div>
@@ -101,7 +129,8 @@ export const Home = () => {
             <p>Get your orders delivered on time,every time</p>
           </div>
         </div>
-      </div>
+                 </motion.div>
+
 
 <FeaturedCollection setData={setData} data={data}/>
 
@@ -138,7 +167,12 @@ export const Home = () => {
    <h2 style={{ fontSize: '35px' }}><b>Offer Zone</b></h2>
           <div className='Home-Offerzone flex overflow-x-scroll '>
            {data?.map((product) => (
-  <div key={product._id}>
+  <motion.div
+  key={product._id}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.4 }}
+>
     <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg' style={{ width: '400px' }}>
       
       <div className='flex gap-3 mt-3'>
@@ -182,13 +216,15 @@ export const Home = () => {
       </div>
 
     </div>
-  </div>
-))}
+ </motion.div>))}
           </div>
 </div>
 
 <div className='Home-iconic-Product'>
-  <div className='iconic-card' style={{position:'relative'}}>
+  <div className='iconic-card' style={{position:'relative'}}
+    initial={{ scale: 1.1 }}
+  whileInView={{ scale: 1 }}
+  transition={{ duration: 1 }}>
     <img src={ Iconic } alt="" className='iconic-img  ' />
     <div style={{position:'absolute',top:'70px',left:'70px'}}>
       <h2 style={{fontSize:'30px',fontWeight:'bold'}}>Elegance in Every Bottle</h2>

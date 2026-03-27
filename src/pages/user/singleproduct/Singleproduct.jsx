@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { FaStar } from "react-icons/fa";
+import { FaRegHeart, FaStar } from "react-icons/fa";
 
 import c1 from '../../../assets/bestseller.png'
 // import side from '../assets/bestseller.png'
@@ -25,6 +25,7 @@ import { Maincontext } from '../../../context/Maincontext';
 // import { Product } from './Product';
 import { Cartcontaxt } from '../../../context/Cartcontext';
 import toast, { Toaster } from 'react-hot-toast';
+import { Wishlistcontaxt } from '../../../context/Wishlistcontext';
 
 
 
@@ -34,6 +35,8 @@ const Singleproduct = () => {
   const {data,setData} =useContext(Maincontext);
   const [product,setProduct]=useState({});
   const {handleAddToCart} =useContext(Cartcontaxt);
+    const { handleAddToWishlist,wishlist  } = useContext(Wishlistcontaxt);
+  
   
   const {id}=useParams();
   console.log("id:",id);
@@ -85,7 +88,16 @@ useEffect(() => {
           
           {/* LIKE & SHARE */}
           <div className="absolute top-4 right-4 flex flex-col gap-3">
-            <button className="bg-white p-2 rounded-full shadow"><FaHeart /></button>
+             <button
+                        className="Like-icon-btn"
+                        onClick={() => handleAddToWishlist(product._id)}
+                      >
+                        {wishlist.some(item => item._id === product._id) ? (
+                          <FaHeart size={22} color="red" />
+                        ) : (
+                          <FaRegHeart size={22} color="black" />
+                        )}
+                      </button>
             <button className="bg-white p-2 rounded-full shadow"><FaShareNodes /></button>
           </div>
         </div>
@@ -161,7 +173,7 @@ useEffect(() => {
                   <div>
                     <h5 className="card-title">{product.name.slice(0, 20)}...</h5>
                     <p className='product-description'>{product.description.slice(0, 30)}...</p>
-                    <p className="card-text ">{product.category}</p>
+                    <p className="card-text ">{product?.category?.name}</p>
                     <h6>Rs {product.price}/-</h6>
                     <h6>Rs {product.salePrice}/-</h6>
                   </div>

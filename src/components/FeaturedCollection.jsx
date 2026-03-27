@@ -3,7 +3,9 @@ import { FaStar } from "react-icons/fa";
 import "./FeaturedCollection.css";
 import { Cartcontaxt } from '../context/Cartcontext';
 import { Link } from 'react-router-dom';
-
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const FeaturedCollection = ({setData,data}) => {
    
@@ -17,7 +19,12 @@ const {handleAddToCart} =useContext(Cartcontaxt);
         <h2 style={{ fontSize: '35px' }}><b>Featured Collections</b></h2>
         <div className='Home-Products-Slide flex overflow-x-scroll  '>
          {data.map((product) => (
-  <div key={product._id}>
+    <motion.div
+  key={product._id}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.4 }}
+>
     <div className='Product-Card m-3 border border-gray-300 rounded-lg shadow-md hover:shadow-lg' style={{ width: '400px' }}>
       
       <div className='flex gap-3 mt-3'>
@@ -62,7 +69,7 @@ const {handleAddToCart} =useContext(Cartcontaxt);
       </div>
 
     </div>
-  </div>
+ </motion.div>
 ))}
         </div>
 

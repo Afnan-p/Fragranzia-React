@@ -1,61 +1,81 @@
-// import { useContext, useState } from "react";
-// import { UserContext } from "../../../../context/UserContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-// const Editprofile = () => {
-//   const { user, updateProfile } = useContext(UserContext);
+const EditProfile = () => {
+  const [form, setForm] = useState({
+    username: "",
+    phone: "",
+  });
 
-//   const [form, setForm] = useState({
-//     username: user?.username || "",
-//     email: user?.email || "",
-//     mobile: user?.mobile || ""
-//   });
+  const token = localStorage.getItem("accessToken");
 
-//   const handleChange = (e) => {
-//     setForm({ ...form, [e.target.name]: e.target.value });
-//   };
+  const fetchProfile = async () => {
+    const res = await axios.get(
+      "http://localhost:5000/api/user/profile",
+      {
+        headers: { Authorization: token },
+      }
+    );
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     updateProfile(form);
-//   };
+    setForm({
+      username: res.data.username || "",
+      phone: res.data.phone || "",
+    });
+  };
 
-//   return (
-//     <div className="bg-white p-6 rounded-xl shadow">
-//       <h3 className="text-lg font-semibold mb-4">Edit Profile</h3>
+  useEffect(() => {
+    fetchProfile();
+  }, []);
 
-//       <form onSubmit={handleSubmit} className="space-y-4">
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-//         <input
-//           type="text"
-//           name="username"
-//           value={form.username}
-//           onChange={handleChange}
-//           className="border p-2 w-full rounded"
-//         />
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//         <input
-//           type="email"
-//           name="email"
-//           value={form.email}
-//           onChange={handleChange}
-//           className="border p-2 w-full rounded"
-//         />
+    await axios.put(
+      "http://localhost:5000/api/user/update-profile",
+      form,
+      {
+        headers: { Authorization: token },
+      }
+    );
 
-//         <input
-//           type="text"
-//           name="mobile"
-//           value={form.mobile}
-//           onChange={handleChange}
-//           className="border p-2 w-full rounded"
-//         />
+    alert("Profile updated 🔥");
+  };
 
-//         <button className="bg-black text-white px-4 py-2 rounded">
-//           Save Changes
-//         </button>
+  return (
+    <div className="bg-white p-6 rounded-xl shadow max-w-md">
+      <h3 className="text-lg font-semibold mb-4">Edit Profile</h3>
 
-//       </form>
-//     </div>
-//   );
-// };
+      <form onSubmit={handleSubmit} className="space-y-4">
 
-// export default Editprofile;
+        <input
+          type="text"
+          name="username"
+          value={form.username}
+          onChange={handleChange}
+          placeholder="Name"
+          className="border p-2 w-full rounded"
+        />
+
+        <input
+          type="text"
+          name="phone"
+          value={form.phone}
+          onChange={handleChange}
+          placeholder="Phone"
+          className="border p-2 w-full rounded"
+        />
+
+        <button className="bg-black text-white px-4 py-2 rounded w-full">
+          Save Changes
+        </button>
+
+      </form>
+    </div>
+  );
+};
+
+export default EditProfile;
