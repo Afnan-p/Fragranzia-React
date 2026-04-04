@@ -132,7 +132,11 @@ export const Home = () => {
                  </motion.div>
 
 
+
+<div className='mt-15'>
+ <h2 style={{ fontSize: '35px' }}><b>Featured Collections</b></h2>
 <FeaturedCollection setData={setData} data={data}/>
+</div>
 
 
 
@@ -220,19 +224,22 @@ export const Home = () => {
           </div>
 </div>
 
+
+
 <div className='Home-iconic-Product'>
-  <div className='iconic-card' style={{position:'relative'}}
-    initial={{ scale: 1.1 }}
-  whileInView={{ scale: 1 }}
-  transition={{ duration: 1 }}>
+  <div
+  className='iconic-card relative'
+
+>
     <img src={ Iconic } alt="" className='iconic-img  ' />
     <div style={{position:'absolute',top:'70px',left:'70px'}}>
       <h2 style={{fontSize:'30px',fontWeight:'bold'}}>Elegance in Every Bottle</h2>
     <p style={{fontSize:'20px'}}>Discover Timeless Fragrances crafted for every moment.</p>
+    <Link  to="/product">
     <button className='Home-iconic-btn mt-6 'style={{cursor:'pointer'}}>Shop Now</button>
+    </Link>
     </div>
-    
-  </div>
+</div>
 </div>
 <Footer/>
 

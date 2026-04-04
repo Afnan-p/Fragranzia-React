@@ -87,12 +87,17 @@ export const Product = () => {
               {product.description?.slice(0, 30)}...
             </p>
 
-            <h6 className="font-bold">
-              Rs {product.price}/-
-            </h6>
+        <span className="line-through text-gray-500">Rs:{product?.price} /-</span>  
+
             <h6 className="font-bold">
               Rs {product.salePrice }/-
             </h6>
+             {/* Rating */}
+        <div className='rating-stars flex  gap-1'>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <FaStar key={i} />
+          ))}
+        </div>
           </div>
         </div>
 
@@ -113,12 +118,7 @@ export const Product = () => {
           </button>
         </div>
 
-        {/* Rating */}
-        <div className='rating-stars flex px-3 gap-1'>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <FaStar key={i} />
-          ))}
-        </div>
+       
 
         {/* Add to Cart */}
         <div className='p-3'>

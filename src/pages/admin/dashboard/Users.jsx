@@ -9,18 +9,15 @@ const Users = () => {
     const {getuser,userdelete}=AdminService()
     
 
-    const fetchUsers = async (req,res) => {
-      try {
-        const res = await getuser();
-        setUsers(res.data)
-        console.log("dataaaa",res.data);
-        
-        
-      } catch (error) {
-        console.log("fetch failed");
-//   res.status(400).json({message:"fetch failed"})
-      }
-    };
+   const fetchUsers = async () => {
+  try {
+    const data = await getuser();
+    setUsers(data);
+    console.log("dataaaa", data);
+  } catch (error) {
+    console.log("fetch failed");
+  }
+};
     useEffect(() => {
         fetchUsers();
       }, []); 

@@ -15,7 +15,7 @@ const [removingId, setRemovingId] = useState(null);
 
 const token = localStorage.getItem("accessToken");
   // const token = userInfo?.token;
-  console.log("TOKEN:", token);
+  // console.log("TOKEN:", token);  
  const config = {
   headers: {
     Authorization: token,
@@ -42,11 +42,11 @@ const token = localStorage.getItem("accessToken");
     }
   };
 
-  useEffect(() => {
-    if (token) {
-      fetchWhishlist();
-    }
-  }, []);
+ useEffect(() => {
+  if (token) {
+    fetchWhishlist();
+  }
+}, [token]);
   // ==========================
   // ADD TO CART
   // ==========================

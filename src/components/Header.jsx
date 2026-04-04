@@ -11,6 +11,9 @@ import { Link, useNavigate } from "react-router-dom";
 export const Header = () => {
   const navigate = useNavigate();
   const user = localStorage.getItem("accessToken");
+  const role=localStorage.getItem("role")
+  // console.log(user,"usetrrrrrr ");
+  
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
@@ -24,10 +27,11 @@ export const Header = () => {
     { name: "Cart", path: "/cart" },
     { name: "Checkout", path: "/order" },
     { name: "Wishlist", path: "/wishlist" },
+    { name: "My Orders", path: "/myorders" },
     { name: "Gifting", path: "/gifting" },
     { name: "About", path: "/about" },
+    
   ];
-
   return (
     <>
       {/* Navbar */}
@@ -57,7 +61,7 @@ export const Header = () => {
             </ul>
 
             {/* Right */}
-            <div className="flex items-center gap-5 ml-auto">
+            <div className="flex items-center gap-2 ml-auto">
 
               {/* Search */}
               <input
@@ -77,10 +81,15 @@ export const Header = () => {
                   <FaBell />
                 </div>
 
-                <Link to={user ? "/profile" : "/login"} className="icon-btn">
-                  <FaUser />
-                </Link>
+<Link to={user ? "/profile" : "/login"} className="icon-btn">
+  <FaUser />
+</Link>
 
+{role === "admin" && (
+  <Link to="/admin/dashboard" className="btn-primary">
+    Dashboard
+  </Link>
+)}
                 {/* Auth */}
                 {user ? (
                   <button
@@ -165,6 +174,11 @@ export const Header = () => {
             <Link to={user ? "/profile" : "/login"} className="icon-btn">
               <FaUser />
             </Link>
+            {role === "admin" && (
+  <Link to="/admin/dashboard" className="btn-primary">
+    Dashboard
+  </Link>
+)}
           </div>
 
           {user ? (

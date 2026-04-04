@@ -16,7 +16,6 @@ const {handleAddToCart} =useContext(Cartcontaxt);
   return (
     
       <div className='Home-Featured-Collections mt-4  '>
-        <h2 style={{ fontSize: '35px' }}><b>Featured Collections</b></h2>
         <div className='Home-Products-Slide flex overflow-x-scroll  '>
          {data.map((product) => (
     <motion.div
@@ -47,17 +46,18 @@ const {handleAddToCart} =useContext(Cartcontaxt);
             {product.description?.slice(0, 30)}...
           </p>
 
-          <h6>Rs { product.price}/-</h6>
+        <span className="line-through text-gray-500">Rs:{product?.price} /-</span>  
           <h6>Rs {product.salePrice}/-</h6>
-        </div>
-
-      </div>
-
-      <div className='rating-stars flex px-3 gap-1'>
+          <div className='rating-stars flex gap-1'>
         {Array.from({ length: 5 }).map((v, i) => (
           <FaStar key={i} />
         ))}
       </div>
+        </div>
+
+      </div>
+
+      
 
       <div className='p-3'>
         <button

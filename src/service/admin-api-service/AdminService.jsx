@@ -50,7 +50,7 @@ const AdminService = () => {
         const response = await axiosPrivate.get("/api/user/fetchuser");
         return response.data;
     };
-     const userdelete = async (UserId) => {
+     const userdelete = async (UserId) => { 
         const response = await axiosPrivate.delete(`/api/user/delete/${UserId}`);
         return response.data;
     };

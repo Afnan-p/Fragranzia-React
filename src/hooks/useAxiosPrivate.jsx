@@ -1,46 +1,26 @@
 import { useEffect } from "react";
-// import Swal from "sweetalert2";
-import useAuth from "./useAuth";
 import { axiosPrivate } from "../axios";
 
-
 const useAxiosPrivate = () => {
-    // const { auth, setAuth } = useAuth();
 
-    useEffect(() => {
-        axiosPrivate.interceptors.request.use(
-            config => {
-                if (config.data instanceof FormData) {
-                    config.headers["Content-Type"] = "multipart/form-data";
-                  } else {
-                    config.headers["Content-Type"] = "application/json";
-                  }
+  useEffect(() => {
+    axiosPrivate.interceptors.request.use(
+      config => {
 
-                if (!config.headers['Authorization']) {
-                    // config.headers['Authorization'] = auth?.accessToken;
-                }
+        const token = localStorage.getItem("accessToken");
 
- 
-                return config;
-            },
-            error => {
-                return Promise.reject(error)
-            }
-        );
+        if (token) {
+          config.headers["Authorization"] = token; // ✅ IMPORTANT
+        }
 
-        axiosPrivate.interceptors.response.use(
-            response => {
-                return response
-            },
-           async error => {
+        return config;
+      },
+      error => Promise.reject(error)
+    );
 
-                return Promise.reject(error)
-            }
-        );
-    }, [])
-    // }, [auth])
+  }, []);
 
-    return axiosPrivate
-}
+  return axiosPrivate;
+};
 
 export default useAxiosPrivate;

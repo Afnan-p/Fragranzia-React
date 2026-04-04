@@ -19,7 +19,7 @@ const  [buyList,setBuyList]=useState([])
 // const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 const token = localStorage.getItem("accessToken");
   // const token = userInfo?.token;
-  console.log("TOKEN:", token);
+  // console.log("TOKEN:", token);
  const config = {
   headers: {
     Authorization: token,
@@ -46,11 +46,11 @@ const token = localStorage.getItem("accessToken");
     }
   };
 
-  useEffect(() => {
-    if (token) {
-      fetchCart();
-    }
-  }, []);
+useEffect(() => {
+  if (token) {
+    fetchCart();
+  }
+}, [token]);
 
 //     function handleAddToCart(id) {
 //   const result = data.find((product) => product._id === id);
@@ -209,6 +209,7 @@ const token = localStorage.getItem("accessToken");
           DecrementFunction,
           Buyfunction,
           buyList,
+           setBuyList
         }}
       >
         {children}

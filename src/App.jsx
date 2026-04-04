@@ -28,6 +28,8 @@ import { Category } from "./pages/admin/dashboard/Catogory";
 import Users from "./pages/admin/dashboard/Users";
 import AdminProtectRoute from "./protectRoutes/AdminProtectRoute";
 import LoginProtectedRoute from "./protectRoutes/LoginProtectedRoute";
+import { Success } from "./pages/user/checkout/Success";
+import { MyOrders } from "./pages/user/checkout/MyOrders";
 
 
 
@@ -51,6 +53,9 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/order" element={<Checkout />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/success" element={<Success/>} />
+        <Route path="/myorders" element={<MyOrders />} />
+
       </Route>
 
       {/*ADMIN ROUTES*/}

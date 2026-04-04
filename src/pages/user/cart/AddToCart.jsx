@@ -9,19 +9,23 @@ import { MdDeleteOutline } from "react-icons/md";
 import "./AddToCart.css"
 import { Footer } from '../../../components/Footer';
 import { FaOpencart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 
 export const AddToCart = () => {
-  const { cartItems, Removeitem, Countfunction, DecrementFunction,Buyfunction } = useContext(Cartcontaxt)
+  const { cartItems, Removeitem, Countfunction, DecrementFunction,Buyfunction,setBuyList } = useContext(Cartcontaxt)
   // console.log(cartItems,"cartitems");
   console.log(Buyfunction,"buyyyyyyyy");
   
   const GrandToatal = cartItems.reduce((total, item) => total +(item.product?.price || 0)* item.quantity, 0);
-
+ const navigate = useNavigate();
+const handleBuyNow = (item) => {
+  setBuyList([item]); // 👈 only one product
+  navigate("/order");
+};
   return (
 
 
@@ -43,12 +47,12 @@ export const AddToCart = () => {
           <div key={item._id}>
 
             {/* CARD */}
-            <div className="Product-Card flex w-full max-w-[650px] gap-5 p-4 mb-5 border border-gray-200">
+            <div className="Product-Card flex w-full max-w-[650px] gap-7 p-4 mb-5 border border-gray-200">
               {/* <div className="Product-Card mx-auto max-w-[650px] w-full p-4"> */}
 
               {/* IMAGE */}
               <img
-                className="w-32 h-32 object-cover rounded-lg"
+                className="w-55 h-50 object-cover rounded-lg"
                 src={`http://localhost:5000/uploads/${item.product?.images?.[0]}`}
                 alt=""
               />
@@ -117,7 +121,7 @@ export const AddToCart = () => {
                 </div>
 
                 {/* BOTTOM */}
-                <div className="flex items-center justify-between mt-3">
+                <div className="flex items-center justify-between">
 
                   {/* STARS */}
                   <div className="flex gap-1 text-yellow-400">
@@ -130,15 +134,25 @@ export const AddToCart = () => {
                   <button className="Cart-Share-btn">
                     Share
                   </button>
+                  
 
                 </div>
-
+                
+<button 
+  className="Buy-btn w-full mt-5"
+  onClick={() => handleBuyNow(item)}
+>
+  Buy Now
+</button>
               </div>
+              
             </div>
 
           </div>
+          
         ))
       )}
+      
     </div>
 
     {/* RIGHT SIDE - CHECKOUT */}
